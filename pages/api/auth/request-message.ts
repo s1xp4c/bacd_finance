@@ -2,9 +2,9 @@ import Moralis from 'moralis';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const config = {
-  domain: process.env.APP_DOMAIN || 'ethereum.boilerplate',
+  domain: process.env.APP_DOMAIN || 'bacd.finance',
   statement: 'Please sign this message to confirm your identity.',
-  uri: process.env.NEXTAUTH_URL || 'http://localhost:3000',
+  uri: process.env.NEXTAUTH_URL || 'https://bacdfinance.netlify.app/',
   timeout: 60,
 };
 
