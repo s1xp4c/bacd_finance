@@ -46,6 +46,7 @@ yarn start
 ```
 
 # 🧭 `Table of contents`
+
 - [`ethereum-boilerplate`](#ethereum-boilerplate)
 - [🚀 Quick Start](#-quick-start)
 - [🧭 Table of contents](#-table-of-contents)
@@ -97,4 +98,3 @@ location: `src/component/templates/transfers/NFT/NFTTransfers.tsx`
 location: `src/component/templates/transactions/Transactions.tsx`
 
 💰 `<Transactions />` : displays the user's transactions. Uses Moralis Evm API (does not require an active web3 provider).
-
