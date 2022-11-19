@@ -17,7 +17,7 @@ const Default: FC<{ children: ReactNode; pageName: string }> = ({ children, page
       <meta name="theme-color" content="#ffffff"></meta>
     </Head>
     <Header />
-    <Container maxW="container.lg" p={3} marginTop={100} as="main" minH="70vh">
+    <Container maxW="container.lg" p={3} marginTop={5} as="main" minH="70vh">
       {children}
     </Container>
     <Footer />

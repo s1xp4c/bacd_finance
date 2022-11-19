@@ -7,8 +7,8 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 
 const NavItem: FC<ISubNav> = ({ label, children, href }) => {
-  const linkColor = useColorModeValue('gray.600', 'gray.400');
-  const linkActiveColor = useColorModeValue('gray.800', 'white');
+  const linkColor = useColorModeValue('white.600', 'white.400');
+  const linkActiveColor = useColorModeValue('white.800', 'green.400');
   const router = useRouter();
   const isCurrentPath = router.asPath === href || (href !== '/' && router.pathname.startsWith(href || ''));
 
