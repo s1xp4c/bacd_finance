@@ -3,11 +3,15 @@ import { ISubNav } from '../SubNav/SubNav';
 // { label: 'Home', href: '/' },
 const NAV_LINKS: ISubNav[] = [
   {
-    label: 'Transactions',
+    label: 'PROFILE',
+    href: '/profile',
+  },
+  {
+    label: 'TRANSACTIONS',
     href: '/transactions',
   },
   {
-    label: 'Transfers',
+    label: 'TRANSFERS',
     href: '/transfers',
     children: [
       {
@@ -25,7 +29,7 @@ const NAV_LINKS: ISubNav[] = [
     ],
   },
   {
-    label: 'Balances',
+    label: 'BALANCES',
     href: '/balances',
     children: [
       {
