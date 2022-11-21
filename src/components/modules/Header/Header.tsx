@@ -6,13 +6,13 @@ const Header = () => {
   return (
     <Box borderBottom="1px" borderBottomColor="chakra-border-color">
       <Container maxW="container.xl" p={'10px'}>
-        <Flex align="center" justify="space-between">
+        <Flex align="center" justify="space-between" >
           <BacdLogo />
-          <NavBar />
-          <HStack gap={'10px'}>
+          <HStack gap={'20px'}>
             <ConnectButton />
             <ColorModeButton />
           </HStack>
+          <NavBar />
         </Flex>
       </Container>
     </Box>

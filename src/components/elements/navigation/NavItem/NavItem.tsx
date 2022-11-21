@@ -14,9 +14,10 @@ const NavItem: FC<ISubNav> = ({ label, children, href }) => {
 
   return (
     <Popover trigger={'hover'} placement={'bottom-start'}>
-      <PopoverTrigger>
-        <Box>
+      <PopoverTrigger >
+        <Box >
           <Box
+            padding={'0 0 25px 0'}
             fontSize={15}
             fontWeight={500}
             color={isCurrentPath ? linkActiveColor : linkColor}
@@ -32,7 +33,7 @@ const NavItem: FC<ISubNav> = ({ label, children, href }) => {
               </>
             ) : (
               <NextLink href={href || '/'}>
-                <Link
+                <Link 
                   _hover={{
                     textDecoration: 'none',
                   }}
