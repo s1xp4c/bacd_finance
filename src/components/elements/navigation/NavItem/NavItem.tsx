@@ -17,7 +17,7 @@ const NavItem: FC<ISubNav> = ({ label, children, href }) => {
       <PopoverTrigger>
         <Box>
           <Box
-            padding={'0 0 25px 0'}
+            padding={'0 0 15px 0'}
             fontSize={15}
             fontWeight={500}
             color={isCurrentPath ? linkActiveColor : linkColor}
