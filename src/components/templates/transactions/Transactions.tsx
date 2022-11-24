@@ -31,34 +31,37 @@ const Transactions: FC<ITransactions> = ({ transactions }) => {
             <Table>
               <Thead>
                 <Tr>
-                  <Th>Hash</Th>
+                  <Th>Chain</Th>
+                  {/* <Th>Hash</Th> */}
                   <Th>From</Th>
                   <Th>To</Th>
-                  <Th>Gas used</Th>
+                  <Th>Amount</Th>
+                  {/* <Th>Gas used</Th> */}
                   <Th>Date</Th>
-                  <Th isNumeric>Status</Th>
                 </Tr>
               </Thead>
               <Tbody>
                 {transactions?.map((tx, key) => (
                   <Tr key={key} _hover={{ bgColor: hoverTrColor }} cursor="pointer">
-                    <Td>{getEllipsisTxt(tx?.hash || '')}</Td>
+                    <Td>{tx.chain}</Td>
+                    {/* <Td>{getEllipsisTxt(tx?.hash || '')}</Td> */}
                     <Td>{getEllipsisTxt(tx?.from || '')}</Td>
                     <Td>{getEllipsisTxt(tx?.to || '')}</Td>
-                    <Td>{tx.gasUsed}</Td>
+                    <Td>{tx.value}</Td>
+                    {/* <Td>{tx.gasUsed}</Td> */}
                     <Td>{new Date(tx.blockTimestamp).toLocaleDateString()}</Td>
-                    <Td isNumeric>{tx.receiptStatus}</Td>
                   </Tr>
                 ))}
               </Tbody>
               <Tfoot>
                 <Tr>
-                  <Th>Hash</Th>
+                  <Th>Chain</Th>
+                  {/* <Th>Hash</Th> */}
                   <Th>From</Th>
                   <Th>To</Th>
-                  <Th>Gas used</Th>
+                  <Th>Amount</Th>
+                  {/* <Th>Gas used</Th> */}
                   <Th>Date</Th>
-                  <Th isNumeric>Status</Th>
                 </Tr>
               </Tfoot>
             </Table>
