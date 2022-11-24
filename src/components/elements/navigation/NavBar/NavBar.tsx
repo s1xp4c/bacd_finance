@@ -19,6 +19,9 @@ const NavBar = () => {
                   colorScheme="teal"
                   aria-label="Options"
                   fontSize="20px"
+                  transition={'all .3s ease'}
+                  _hover={{ color: 'green.400' }}
+                  // fontWeight={500}
                 />
               ) : (
                 <MenuButton
@@ -29,6 +32,8 @@ const NavBar = () => {
                   colorScheme="teal"
                   aria-label="Options"
                   fontSize="35px"
+                  transition={'all .3s ease'}
+                  _hover={{ color: 'green.400' }}
                 />
               )}
               <MenuList>
