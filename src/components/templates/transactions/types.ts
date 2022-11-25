@@ -1,3 +1,5 @@
+import { BigNumber } from 'ethers';
+
 type TTransaction = {
   to: string | undefined;
   from: string;
@@ -7,7 +9,7 @@ type TTransaction = {
   gasUsed: string;
   cumulativeGasUsed: string;
   blockNumber: string;
-  value: string | undefined;
+  value: BigNumber | number;
   chain: string | number;
   contractAddress: string | undefined;
   logs: {

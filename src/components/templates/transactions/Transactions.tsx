@@ -32,11 +32,9 @@ const Transactions: FC<ITransactions> = ({ transactions }) => {
               <Thead>
                 <Tr>
                   <Th>Chain</Th>
-                  {/* <Th>Hash</Th> */}
                   <Th>From</Th>
                   <Th>To</Th>
                   <Th>Amount</Th>
-                  {/* <Th>Gas used</Th> */}
                   <Th>Date</Th>
                 </Tr>
               </Thead>
@@ -44,11 +42,9 @@ const Transactions: FC<ITransactions> = ({ transactions }) => {
                 {transactions?.map((tx, key) => (
                   <Tr key={key} _hover={{ bgColor: hoverTrColor }} cursor="pointer">
                     <Td>{tx.chain}</Td>
-                    {/* <Td>{getEllipsisTxt(tx?.hash || '')}</Td> */}
                     <Td>{getEllipsisTxt(tx?.from || '')}</Td>
                     <Td>{getEllipsisTxt(tx?.to || '')}</Td>
-                    <Td>{tx.value}</Td>
-                    {/* <Td>{tx.gasUsed}</Td> */}
+                    <Td>{(tx.value / 1e18).toFixed(5)} ETH</Td>
                     <Td>{new Date(tx.blockTimestamp).toLocaleDateString()}</Td>
                   </Tr>
                 ))}
@@ -56,11 +52,9 @@ const Transactions: FC<ITransactions> = ({ transactions }) => {
               <Tfoot>
                 <Tr>
                   <Th>Chain</Th>
-                  {/* <Th>Hash</Th> */}
                   <Th>From</Th>
                   <Th>To</Th>
                   <Th>Amount</Th>
-                  {/* <Th>Gas used</Th> */}
                   <Th>Date</Th>
                 </Tr>
               </Tfoot>
