@@ -5,8 +5,8 @@ import { ConnectButton } from '../ConnectButton';
 const Header = () => {
   return (
     <Box borderBottom="1px" borderBottomColor="chakra-border-color">
-      <Container maxW="container.xl" p={'10px'}>
-        <Flex align="center" justify="space-between" >
+      <Container maxW="container.lg" p={'10px'}>
+        <Flex align="center" justify="space-between">
           <BacdLogo />
           <HStack gap={'20px'}>
             <ConnectButton />

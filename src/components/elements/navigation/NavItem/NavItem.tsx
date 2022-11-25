@@ -1,5 +1,5 @@
 import { Box, Link, Popover, PopoverContent, PopoverTrigger, Stack, useColorModeValue } from '@chakra-ui/react';
-import { ChevronDownIcon } from '@chakra-ui/icons';
+import { ChevronLeftIcon } from '@chakra-ui/icons';
 import { FC } from 'react';
 import { ISubNav } from '../SubNav/SubNav';
 import { SubNav } from '../SubNav';
@@ -13,7 +13,7 @@ const NavItem: FC<ISubNav> = ({ label, children, href }) => {
   const isCurrentPath = router.asPath === href || (href !== '/' && router.pathname.startsWith(href || ''));
 
   return (
-    <Popover trigger={'hover'} placement={'bottom-start'}>
+    <Popover trigger={'hover'} placement={'left-start'}>
       <PopoverTrigger>
         <Box>
           <Box
@@ -29,7 +29,7 @@ const NavItem: FC<ISubNav> = ({ label, children, href }) => {
           >
             {children ? (
               <>
-                {label} <ChevronDownIcon />
+                <ChevronLeftIcon /> {label}
               </>
             ) : (
               <NextLink href={href || '/'}>
