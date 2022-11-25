@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { FC, useEffect } from 'react';
 import { getEllipsisTxt } from 'utils/format';
+
 import { ITransactions } from './types';
 
 const Transactions: FC<ITransactions> = ({ transactions }) => {
@@ -44,7 +45,7 @@ const Transactions: FC<ITransactions> = ({ transactions }) => {
                     <Td>{tx.chain}</Td>
                     <Td>{getEllipsisTxt(tx?.from || '')}</Td>
                     <Td>{getEllipsisTxt(tx?.to || '')}</Td>
-                    <Td>{(tx.value / 1e18).toFixed(5)} ETH</Td>
+                    <Td>{(tx.value / 1e18).toFixed(5)}</Td>
                     <Td>{new Date(tx.blockTimestamp).toLocaleDateString()}</Td>
                   </Tr>
                 ))}

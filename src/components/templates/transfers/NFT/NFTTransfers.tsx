@@ -36,20 +36,20 @@ const NFTTransfers: FC<INFTTransfers> = ({ transfers }) => {
                   <Th>From</Th>
                   <Th>To</Th>
                   <Th>Type</Th>
-                  <Th>Date</Th>
-                  <Th isNumeric>Tx Hash</Th>
+                  <Th>Tx Hash</Th>
+                  <Th isNumeric>Date</Th>
                 </Tr>
               </Thead>
               <Tbody>
                 {transfers?.map((transfer, key) => (
                   <Tr key={key} _hover={{ bgColor: hoverTrColor }} cursor="pointer">
                     <Td>{getEllipsisTxt(transfer?.tokenAddress || '')}</Td>
-                    <Td>{transfer?.tokenId}</Td>
+                    <Td>{getEllipsisTxt(transfer?.tokenId || '')}</Td>
                     <Td>{getEllipsisTxt(transfer?.fromAddress || '')}</Td>
                     <Td>{getEllipsisTxt(transfer?.toAddress || '')}</Td>
                     <Td>{transfer.contractType}</Td>
-                    <Td>{new Date(transfer.blockTimestamp).toLocaleDateString()}</Td>
-                    <Td isNumeric>{getEllipsisTxt(transfer.transactionHash, 2)}</Td>
+                    <Td>{getEllipsisTxt(transfer.transactionHash, 3)}</Td>
+                    <Td isNumeric>{new Date(transfer.blockTimestamp).toLocaleDateString()}</Td>
                   </Tr>
                 ))}
               </Tbody>
@@ -60,8 +60,8 @@ const NFTTransfers: FC<INFTTransfers> = ({ transfers }) => {
                   <Th>From</Th>
                   <Th>To</Th>
                   <Th>Type</Th>
-                  <Th>Date</Th>
-                  <Th isNumeric>Tx Hash</Th>
+                  <Th>Tx Hash</Th>
+                  <Th isNumeric>Date</Th>
                 </Tr>
               </Tfoot>
             </Table>
