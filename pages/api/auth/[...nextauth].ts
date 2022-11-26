@@ -1,12 +1,15 @@
 import CredentialsProvider from 'next-auth/providers/credentials';
 import NextAuth from 'next-auth';
 import Moralis from 'moralis';
+import connectDB from '../../../lib/connectDB';
+import Users from '../../../lib/userSchema';
 
 export type TUserData = {
   address: string;
   signature: string;
   profileId: string;
   expirationTime: string;
+  bio: string;
 };
 
 export interface ISession {
@@ -40,6 +43,16 @@ export default NextAuth({
           ).raw;
 
           const user = { address, profileId, expirationTime, signature };
+
+          await connectDB();
+          const MongoUser = await Users.findOne({ profileId });
+
+          if (!MongoUser) {
+            const newUser = new Users({
+              profileId,
+            });
+            await newUser.save();
+          }
 
           return user;
         } catch (e) {

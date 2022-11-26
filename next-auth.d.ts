@@ -1,4 +1,3 @@
-import NextAuth from 'next-auth';
 import { TUserData } from './pages/api/auth/[...nextauth]';
 
 declare module 'next-auth' {

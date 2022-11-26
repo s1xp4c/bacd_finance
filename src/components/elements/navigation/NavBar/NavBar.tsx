@@ -21,7 +21,6 @@ const NavBar = () => {
                   fontSize="20px"
                   transition={'all .3s ease-in'}
                   _hover={{ color: 'green.400' }}
-                  // fontWeight={500}
                 />
               ) : (
                 <MenuButton
