@@ -4,6 +4,7 @@ import { useAccount, useConnect, useDisconnect, useSignMessage } from 'wagmi';
 import apiPost from 'utils/apiPost';
 import { Button, Text, HStack, Avatar, useToast } from '@chakra-ui/react';
 import { getEllipsisTxt } from 'utils/format';
+import axios from 'axios';
 
 const ConnectButton = () => {
   const { connectAsync } = useConnect({ connector: new InjectedConnector() });
@@ -22,6 +23,12 @@ const ConnectButton = () => {
       const userData = { address: account, chain: chain.id, network: 'evm' };
       const { message } = await apiPost('/auth/request-message', userData);
       const signature = await signMessageAsync({ message });
+
+      await axios.post('/api/auth/request-message', userData, {
+        headers: {
+          'content-type': 'application/json',
+        },
+      });
 
       await signIn('credentials', { message, signature, callbackUrl: '/' });
     } catch (e) {

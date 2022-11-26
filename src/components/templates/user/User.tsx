@@ -57,14 +57,17 @@ const User: FC<IUserdata> = ({ user }) => {
                 <Tr>
                   <Th>User ID</Th>
                   <Th>About</Th>
+                  <Th>{<input onChange={(e) => changeValue(e.target.value)} value={value}></input>}</Th>
+                  <Th>{<button onClick={() => updateBio()}>Update</button>}</Th>
                 </Tr>
               </Thead>
               <Tbody>
                 {user?.map((you, key) => (
                   <Tr key={key} _hover={{ bgColor: hoverTrColor }} cursor="pointer">
                     <Td>{getEllipsisTxt(you.profileId)}</Td>
-                    <Td>{<input onChange={(e) => changeValue(e.target.value)} value={value}></input>}</Td>
-                    <Td>{<button onClick={() => updateBio()}>Update About</button>}</Td>
+                    <Td>{getEllipsisTxt(you.bio)}</Td>
+                    <Td></Td>
+                    <Td></Td>
                   </Tr>
                 ))}
               </Tbody>
@@ -72,6 +75,8 @@ const User: FC<IUserdata> = ({ user }) => {
                 <Tr>
                   <Th>User ID</Th>
                   <Th>About</Th>
+                  <Th></Th>
+                  <Th></Th>
                 </Tr>
               </Tfoot>
             </Table>

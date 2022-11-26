@@ -1,10 +1,5 @@
-type TUserData = {
-  address: string;
-  signature: string;
-  profileId: string;
-  expirationTime: string;
-  bio: string;
-};
+import { TUserData } from '../../../../pages/api/auth/[...nextauth]';
+
 export interface IUserdata {
   user?: TUserData[];
 }

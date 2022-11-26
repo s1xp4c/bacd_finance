@@ -4,7 +4,7 @@ type TTokenTransfer = {
   blockNumber: string;
   toAddress: string;
   fromAddress: string;
-  value: string;
+  value: number;
   transactionHash: string;
   blockTimestamp: Date;
   blockHash: string;
@@ -13,11 +13,3 @@ type TTokenTransfer = {
 export interface IERC20Transfers {
   transfers?: TTokenTransfer[];
 }
-
-// contractAddress: string;
-// decimals: number;
-// name: string;
-// symbol: string;
-// logo?: string | null | undefined;
-// logoHash?: string | null | undefined;
-// thumbnail?: string | null | undefined;

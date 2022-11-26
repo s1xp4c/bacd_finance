@@ -45,7 +45,7 @@ const ERC20Transfers: FC<IERC20Transfers> = ({ transfers }) => {
                     <Td>{getEllipsisTxt(transfer?.fromAddress || '')}</Td>
                     <Td>{getEllipsisTxt(transfer?.toAddress || '')}</Td>
                     <Td>{new Date(transfer.blockTimestamp).toLocaleDateString()}</Td>
-                    <Td isNumeric>{transfer.value}</Td>
+                    <Td isNumeric>{(transfer.value / 1e18).toFixed(5)}</Td>
                   </Tr>
                 ))}
               </Tbody>
