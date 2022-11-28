@@ -1,5 +1,10 @@
-import { TUserData } from '../../../../pages/api/auth/[...nextauth]';
+type TUserData = {
+  address: string;
+  profileId: string;
+  bio: string;
+  balance?: number;
+};
 
-export interface IUserdata {
+export interface IUserData {
   user?: TUserData[];
 }

@@ -1,6 +1,6 @@
 import { getSession, GetSessionParams } from 'next-auth/react';
-import Users from '../../../../lib/userSchema';
-import connectDB from '../../../../lib/connectDB';
+import Users from '../../../../pages/api/auth/userSchema';
+import connectDB from '../../../../pages/api/auth/connectDB';
 import { useState } from 'react';
 import axios from 'axios';
 import {
@@ -19,19 +19,19 @@ import {
 import { FC, useEffect } from 'react';
 import { getEllipsisTxt } from 'utils/format';
 
-import { IUserdata } from './types';
+import { IUserData } from './types';
 
-const User: FC<IUserdata> = ({ user }) => {
+const User: FC<IUserData> = ({ user }) => {
   const hoverTrColor = useColorModeValue('gray.100', 'gray.700');
 
   useEffect(() => console.log('user: ', user), [user]);
 
-  const [value, changeValue] = useState('New Bio');
+  const [bioValue, changeBioValue] = useState('New Bio');
 
   async function updateBio() {
     const data = await axios.post(
-      '/api/updateBio',
-      { profileId: user, bio: value },
+      'api/updateMongoUser',
+      { profileId: user, bio: bioValue },
       {
         headers: {
           'content-type': 'application/json',
@@ -57,8 +57,10 @@ const User: FC<IUserdata> = ({ user }) => {
                 <Tr>
                   <Th>User ID</Th>
                   <Th>About</Th>
-                  <Th>{<input onChange={(e) => changeValue(e.target.value)} value={value}></input>}</Th>
+                  <Th>{<input onChange={(e) => changeBioValue(e.target.value)} value={bioValue}></input>}</Th>
                   <Th>{<button onClick={() => updateBio()}>Update</button>}</Th>
+                  <Th></Th>
+                  <Th>Balance</Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -68,6 +70,8 @@ const User: FC<IUserdata> = ({ user }) => {
                     <Td>{getEllipsisTxt(you.bio)}</Td>
                     <Td></Td>
                     <Td></Td>
+                    <Td></Td>
+                    <Td>{you.balance}</Td>
                   </Tr>
                 ))}
               </Tbody>
@@ -77,6 +81,8 @@ const User: FC<IUserdata> = ({ user }) => {
                   <Th>About</Th>
                   <Th></Th>
                   <Th></Th>
+                  <Th></Th>
+                  <Th>Balance</Th>
                 </Tr>
               </Tfoot>
             </Table>

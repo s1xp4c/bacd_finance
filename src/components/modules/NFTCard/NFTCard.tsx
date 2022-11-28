@@ -9,12 +9,21 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata })
   const borderColor = useColorModeValue('blue.200', 'blue.700');
   const descBgColor = useColorModeValue('blue.100', 'blue.600');
   const bgGradient = 'linear(to-r, blue.300, yellow.400, pink.200)';
+  // const name = {metadata.name,};
 
   return (
-    <Box maxWidth="315px" bgColor={bgColor} bgGradient={bgGradient} padding={3} borderRadius="xl" borderWidth="1px" borderColor={borderColor}>
+    <Box
+      maxWidth="315px"
+      bgColor={bgColor}
+      bgGradient={bgGradient}
+      padding={3}
+      borderRadius="xl"
+      borderWidth="1px"
+      borderColor={borderColor}
+    >
       <Box maxHeight="260px" overflow={'hidden'} borderRadius="xl">
         <Image
-          src={resolveIPFS(metadata?.image as string)}
+          src={resolveIPFS(metadata?.image_url as string)}
           alt={'nft'}
           minH="260px"
           minW="260px"
@@ -32,7 +41,7 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata })
 
         <Eth fontSize="20px" />
       </HStack>
-      <SimpleGrid columns={2} spacing={4} bgColor={descBgColor}  padding={2.5} borderRadius="xl" marginTop={2}>
+      <SimpleGrid columns={2} spacing={4} bgColor={descBgColor} padding={2.5} borderRadius="xl" marginTop={2}>
         <Box>
           <Box as="h4" noOfLines={1} fontWeight="medium" fontSize="sm">
             Symbol

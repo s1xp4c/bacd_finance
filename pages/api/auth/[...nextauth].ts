@@ -1,8 +1,8 @@
 import CredentialsProvider from 'next-auth/providers/credentials';
 import NextAuth from 'next-auth';
 import Moralis from 'moralis';
-import connectDB from '../../../lib/connectDB';
-import Users from '../../../lib/userSchema';
+import connectDB from './connectDB';
+import Users from './userSchema';
 
 export type TUserData = {
   address: string;

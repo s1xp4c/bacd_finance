@@ -5,10 +5,6 @@ const userSchema = new mongoose.Schema(
     profileId: {
       type: String,
     },
-    balance: {
-      type: Number,
-    },
-
     bio: {
       type: String,
       default: 'Input a little about yourself :)',
