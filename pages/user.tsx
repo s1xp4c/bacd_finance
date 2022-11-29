@@ -1,11 +1,11 @@
 import { Default } from 'components/layouts/Default';
 import { GetServerSideProps, NextPage } from 'next';
 import { getSession } from 'next-auth/react';
-import { useSession } from 'next-auth/react';
 import { IUserData, User } from 'components/templates/user';
-import Moralis from 'moralis';
+import Users from './api/auth/userSchema';
+import connectDB from './api/auth/connectDB';
 
-const { data } = useSession();
+import Moralis from 'moralis';
 
 const userPage: NextPage<IUserData> = (props) => {
   return (
@@ -24,7 +24,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return { props: { error: 'Connect your wallet first' } };
   }
 
-  const userData = { address: data?.user.address, profileId: data?.user.profileId, bio: data?.bio };
+  await connectDB();
+
+  const userM = await Users.findOne({
+    profileId: session?.user.profileId,
+  }).lean();
+
+  const userData = { address: userM?.address, profileId: userM?.profileId, bio: userM?.bio };
 
   return {
     props: {

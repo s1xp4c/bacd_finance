@@ -9,6 +9,12 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: 'Input a little about yourself :)',
     },
+    address: {
+      type: String,
+    },
+    balance: {
+      type: Number,
+    },
   },
   { timestamps: true },
 );
