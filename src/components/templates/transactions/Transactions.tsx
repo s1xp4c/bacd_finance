@@ -36,7 +36,7 @@ const Transactions: FC<ITransactions> = ({ transactions }) => {
                   <Th>From</Th>
                   <Th>To</Th>
                   <Th>Amount</Th>
-                  <Th>Date</Th>
+                  <Th isNumeric>Date</Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -46,7 +46,7 @@ const Transactions: FC<ITransactions> = ({ transactions }) => {
                     <Td>{getEllipsisTxt(tx?.from || '')}</Td>
                     <Td>{getEllipsisTxt(tx?.to || '')}</Td>
                     <Td>{(tx.value / 1e18).toFixed(5)}</Td>
-                    <Td>{new Date(tx.blockTimestamp).toLocaleDateString()}</Td>
+                    <Td isNumeric>{new Date(tx.blockTimestamp).toLocaleDateString()}</Td>
                   </Tr>
                 ))}
               </Tbody>
@@ -56,7 +56,7 @@ const Transactions: FC<ITransactions> = ({ transactions }) => {
                   <Th>From</Th>
                   <Th>To</Th>
                   <Th>Amount</Th>
-                  <Th>Date</Th>
+                  <Th isNumeric>Date</Th>
                 </Tr>
               </Tfoot>
             </Table>

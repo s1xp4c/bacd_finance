@@ -13,7 +13,13 @@ import {
   Heading,
   Box,
   useColorModeValue,
+  Button,
+  Input,
+  Grid,
+  GridItem,
+  Avatar,
 } from '@chakra-ui/react';
+import { RepeatIcon } from '@chakra-ui/icons';
 import { useEffect } from 'react';
 import { getEllipsisTxt } from 'utils/format';
 
@@ -40,9 +46,18 @@ function User({ user }) {
 
   return (
     <>
-      <Heading size="lg" marginBottom={6}>
-        User Profile
-      </Heading>
+      <Grid templateColumns="repeat(5, 1fr)" gap={4}>
+        <GridItem colSpan={2}>
+          <Box>
+            <Avatar></Avatar>
+          </Box>
+        </GridItem>
+        <GridItem colSpan={3}>
+          <Heading size="lg" marginBottom={6}>
+            User Profile
+          </Heading>
+        </GridItem>
+      </Grid>
       {user ? (
         <Box border="2px" borderColor={hoverTrColor} borderRadius="xl" padding="24px 18px">
           <TableContainer w={'full'}>
@@ -51,8 +66,8 @@ function User({ user }) {
                 <Tr>
                   <Th>User ID</Th>
                   <Th>About</Th>
-                  <Th>{<input onChange={(e) => changeBioValue(e.target.value)} value={bioValue}></input>}</Th>
-                  <Th>{<button onClick={() => updateBio()}>Update</button>}</Th>
+                  <Th></Th>
+                  <Th></Th>
                   <Th></Th>
                   <Th>Balance</Th>
                 </Tr>
@@ -61,8 +76,14 @@ function User({ user }) {
                 <Tr _hover={{ bgColor: hoverTrColor }} cursor="pointer">
                   <Td>{getEllipsisTxt(user.profileId)}</Td>
                   <Td>{user.bio}</Td>
-                  <Td></Td>
-                  <Td></Td>
+                  <Td>{<Input onChange={(e) => changeBioValue(e.target.value)} value={bioValue}></Input>}</Td>
+                  <Td>
+                    {
+                      <Button onClick={() => updateBio()}>
+                        <RepeatIcon></RepeatIcon>{' '}
+                      </Button>
+                    }
+                  </Td>
                   <Td></Td>
                   <Td>{user.balance}</Td>
                 </Tr>
