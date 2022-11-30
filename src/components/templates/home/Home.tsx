@@ -24,8 +24,8 @@ const Home = () => {
         <GridItem colSpan={2}>
           <List spacing={4}>
             <ListItem borderBottom="2px" borderBottomColor={hoverLiColor}>
-              <Heading size="sm" marginBottom={1}>
-                <ListIcon as={WarningTwoIcon} color="green.500" />
+              <Heading size="md" marginBottom={1}>
+                <ListIcon as={CheckCircleIcon} color="green.500" />
                 Done
               </Heading>
             </ListItem>
@@ -52,7 +52,7 @@ const Home = () => {
         <GridItem colStart={4} colEnd={6}>
           <List spacing={4}>
             <ListItem borderBottom="2px" borderBottomColor={hoverLiColor}>
-              <Heading size="sm" marginBottom={1}>
+              <Heading size="md" marginBottom={1}>
                 <ListIcon as={WarningTwoIcon} color="yellow.500" />
                 In Progress
               </Heading>
@@ -72,6 +72,10 @@ const Home = () => {
             <ListItem>
               <ListIcon as={WarningTwoIcon} color="yellow.500" />
               Voting integration
+            </ListItem>
+            <ListItem>
+              <ListIcon as={WarningTwoIcon} color="yellow.500" />
+              Real Time Coin charts
             </ListItem>
           </List>
         </GridItem>
