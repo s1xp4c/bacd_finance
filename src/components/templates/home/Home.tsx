@@ -12,6 +12,9 @@ const Home = () => {
       <Heading size="sm" marginBottom={1}>
         Merging ceFi (Centralized Finance) and deFi (DeCentralized Finance) for the masses.
       </Heading>
+      <Heading size="sm" marginBottom={1}>
+        Please connect your wallet to see your Blockchain Interactions and holdings
+      </Heading>
       <br></br>
       <Grid
         templateColumns="repeat(5, 1fr)"
