@@ -4,7 +4,7 @@ type TUserData = {
   profileId: string;
   expirationTime: string;
   bio: string;
-  balance: number;
+  username: string;
 };
 
 export interface IUserData {

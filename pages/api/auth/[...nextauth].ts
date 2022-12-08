@@ -10,7 +10,7 @@ export type TUserData = {
   profileId: string;
   expirationTime: string;
   bio: string;
-  balance: number;
+  username: string;
 };
 
 export interface ISession {
@@ -51,7 +51,6 @@ export default NextAuth({
           if (!MongoUser) {
             const newUser = new Users({
               profileId: user.profileId,
-              address: user.address,
             });
             await newUser.save();
           }

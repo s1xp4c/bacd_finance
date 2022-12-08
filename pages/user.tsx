@@ -26,11 +26,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   await connectDB();
 
+  const userB = {
+    address: session?.user.address,
+  };
+
   const userM = await Users.findOne({
     profileId: session?.user.profileId,
   }).lean();
+  console.log('userB:', userB);
 
-  const userData = { address: userM?.address, profileId: userM?.profileId, bio: userM?.bio };
+  const userData = { address: userB?.address, profileId: userM?.profileId, bio: userM?.bio, username: userM?.username };
 
   return {
     props: {

@@ -9,7 +9,6 @@ import {
   Th,
   Tbody,
   Td,
-  Tfoot,
   Heading,
   Box,
   useColorModeValue,
@@ -28,12 +27,13 @@ function User({ user }) {
 
   useEffect(() => console.log('user: ', user), [user]);
 
-  const [bioValue, changeBioValue] = useState();
+  const [bioValue, changeBioValue] = useState(user.bio);
+  const [nameValue, changeNameValue] = useState(user.username);
 
-  async function updateBio() {
+  async function updateUserInfo() {
     const { data } = await axios.post(
       'api/updateMongoUser',
-      { profileId: user.profileId, bio: bioValue },
+      { profileId: user.profileId, bio: bioValue, username: nameValue },
       {
         headers: {
           'content-type': 'application/json',
@@ -41,7 +41,7 @@ function User({ user }) {
       },
     );
 
-    console.log(`Bio Updated to: ${data.bio}`);
+    console.log(`User Updated with: ${data.bio}, ${data.username}`);
   }
 
   return (
@@ -64,40 +64,84 @@ function User({ user }) {
             <Table>
               <Thead>
                 <Tr>
-                  <Th>User ID</Th>
-                  <Th>About</Th>
-                  <Th></Th>
-                  <Th></Th>
-                  <Th></Th>
-                  <Th>Balance</Th>
+                  <Th>User ID:</Th>
                 </Tr>
               </Thead>
               <Tbody>
                 <Tr _hover={{ bgColor: hoverTrColor }} cursor="pointer">
                   <Td>{getEllipsisTxt(user.profileId)}</Td>
-                  <Td>{user.bio}</Td>
-                  <Td>{<Input onChange={(e) => changeBioValue(e.target.value)} value={bioValue}></Input>}</Td>
+                </Tr>
+              </Tbody>
+            </Table>
+            <Table>
+              <Thead>
+                <Tr>
+                  <Th>Username:</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                <Tr _hover={{ bgColor: hoverTrColor }} cursor="pointer">
+                  <Td>{nameValue}</Td>
+                  <Td>
+                    {' '}
+                    {
+                      <Input
+                        width={'full'}
+                        onChange={(e) => changeNameValue(e.target.value)}
+                        placeholder={'Update Username'}
+                        value={undefined}
+                      ></Input>
+                    }
+                  </Td>
                   <Td>
                     {
-                      <Button onClick={() => updateBio()}>
+                      <Button onClick={() => updateUserInfo()}>
                         <RepeatIcon></RepeatIcon>{' '}
                       </Button>
                     }
                   </Td>
-                  <Td></Td>
-                  <Td>{user.balance}</Td>
                 </Tr>
               </Tbody>
-              <Tfoot>
+            </Table>
+            <Table>
+              <Thead>
                 <Tr>
-                  <Th>User ID</Th>
-                  <Th>About</Th>
-                  <Th></Th>
-                  <Th></Th>
-                  <Th></Th>
-                  <Th>Balance</Th>
+                  <Th>deFi wallet address:</Th>
                 </Tr>
-              </Tfoot>
+              </Thead>
+              <Tbody>
+                <Tr _hover={{ bgColor: hoverTrColor }} cursor="pointer">
+                  <Td>{getEllipsisTxt(user.address)}</Td>
+                </Tr>
+              </Tbody>
+            </Table>
+            <Table>
+              <Thead>
+                <Tr>
+                  <Th>About You</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                <Tr _hover={{ bgColor: hoverTrColor }} cursor="pointer">
+                  <Td>{bioValue}</Td>
+                  <Td>
+                    {
+                      <Input
+                        onChange={(e) => changeBioValue(e.target.value)}
+                        placeholder={'New About You?'}
+                        value={undefined}
+                      ></Input>
+                    }
+                  </Td>
+                  <Td>
+                    {
+                      <Button onClick={() => updateUserInfo()}>
+                        <RepeatIcon></RepeatIcon>{' '}
+                      </Button>
+                    }
+                  </Td>
+                </Tr>
+              </Tbody>
             </Table>
           </TableContainer>
         </Box>

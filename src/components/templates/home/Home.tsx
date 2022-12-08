@@ -62,7 +62,7 @@ const Home = () => {
             </ListItem>
             <ListItem>
               <ListIcon as={WarningTwoIcon} color="yellow.500" />
-              File upload
+              IPFS File upload
             </ListItem>
             <ListItem>
               <ListIcon as={WarningTwoIcon} color="yellow.500" />

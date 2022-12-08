@@ -12,8 +12,8 @@ const userSchema = new mongoose.Schema(
     address: {
       type: String,
     },
-    balance: {
-      type: Number,
+    username: {
+      type: String,
     },
   },
   { timestamps: true },
