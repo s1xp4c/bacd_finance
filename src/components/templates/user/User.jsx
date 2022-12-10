@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import React from 'react';
 import axios from 'axios';
 import {
@@ -17,20 +17,28 @@ import {
   Grid,
   GridItem,
   Avatar,
+  useBoolean,
 } from '@chakra-ui/react';
 import { RepeatIcon } from '@chakra-ui/icons';
-import { useEffect } from 'react';
 import { getEllipsisTxt } from 'utils/format';
 
 function User({ user }) {
   const hoverTrColor = useColorModeValue('gray.100', 'gray.700');
+  const [addressHovered, setAddressHovered] = useBoolean();
+  const [profileIdHovered, setProfileIdHovered] = useBoolean();
+
+  const [bioValue, changeBioValue] = useState();
+  const [nameValue, changeNameValue] = useState();
+
+  const [pulledBio, changePulledBio] = useState(user.bio);
+  const [pulledName, changePulledName] = useState(user.username);
+
+  const [inputValueName, changeInputValueName] = useState(undefined);
+  const [inputValueBio, changeInputValueBio] = useState(undefined);
 
   useEffect(() => console.log('user: ', user), [user]);
 
-  const [bioValue, changeBioValue] = useState(user.bio);
-  const [nameValue, changeNameValue] = useState(user.username);
-
-  async function updateUserInfo() {
+  async function updateUserBio() {
     const { data } = await axios.post(
       'api/updateMongoUser',
       { profileId: user.profileId, bio: bioValue, username: nameValue },
@@ -40,8 +48,24 @@ function User({ user }) {
         },
       },
     );
+    changePulledBio(data.bio);
+    changeInputValueBio('');
+    console.log(`User Updated with: ${data.bio}`);
+  }
 
-    console.log(`User Updated with: ${data.bio}, ${data.username}`);
+  async function updateUserName() {
+    const { data } = await axios.post(
+      'api/updateMongoUser',
+      { profileId: user.profileId, username: nameValue },
+      {
+        headers: {
+          'content-type': 'application/json',
+        },
+      },
+    );
+    changePulledName(data.username);
+    changeInputValueName('');
+    console.log(`User Updated with: ${data.username}`);
   }
 
   return (
@@ -54,12 +78,12 @@ function User({ user }) {
         </GridItem>
         <GridItem colSpan={3}>
           <Heading size="lg" marginBottom={6}>
-            User Profile
+            User Info
           </Heading>
         </GridItem>
       </Grid>
       {user ? (
-        <Box border="2px" borderColor={hoverTrColor} borderRadius="xl" padding="24px 18px">
+        <Box border="2px" borderColor={hoverTrColor} borderRadius="xl" padding="26px 18px">
           <TableContainer w={'full'}>
             <Table>
               <Thead>
@@ -68,8 +92,13 @@ function User({ user }) {
                 </Tr>
               </Thead>
               <Tbody>
-                <Tr _hover={{ bgColor: hoverTrColor }} cursor="pointer">
-                  <Td>{getEllipsisTxt(user.profileId)}</Td>
+                <Tr
+                  _hover={{ bgColor: hoverTrColor }}
+                  onMouseEnter={setProfileIdHovered.on}
+                  onMouseLeave={setProfileIdHovered.off}
+                  cursor="pointer"
+                >
+                  {!profileIdHovered ? <Td>{getEllipsisTxt(user.profileId)}</Td> : <Td>{user.profileId}</Td>}
                 </Tr>
               </Tbody>
             </Table>
@@ -81,21 +110,31 @@ function User({ user }) {
               </Thead>
               <Tbody>
                 <Tr _hover={{ bgColor: hoverTrColor }} cursor="pointer">
-                  <Td>{nameValue}</Td>
+                  <Td width={'full'}>{pulledName}</Td>
+                </Tr>
+              </Tbody>
+            </Table>
+
+            <Table>
+              <Tbody>
+                <Tr>
                   <Td>
                     {' '}
                     {
                       <Input
+                        id="nameInput"
                         width={'full'}
-                        onChange={(e) => changeNameValue(e.target.value)}
-                        placeholder={'Update Username'}
-                        value={undefined}
+                        onChange={(e) => {
+                          changeNameValue(e.target.value);
+                        }}
+                        placeholder={'Change Username'}
+                        value={inputValueName}
                       ></Input>
                     }
                   </Td>
                   <Td>
                     {
-                      <Button onClick={() => updateUserInfo()}>
+                      <Button onClick={() => updateUserName()}>
                         <RepeatIcon></RepeatIcon>{' '}
                       </Button>
                     }
@@ -110,8 +149,13 @@ function User({ user }) {
                 </Tr>
               </Thead>
               <Tbody>
-                <Tr _hover={{ bgColor: hoverTrColor }} cursor="pointer">
-                  <Td>{getEllipsisTxt(user.address)}</Td>
+                <Tr
+                  _hover={{ bgColor: hoverTrColor }}
+                  onMouseEnter={setAddressHovered.on}
+                  onMouseLeave={setAddressHovered.off}
+                  cursor="pointer"
+                >
+                  {!addressHovered ? <Td>{getEllipsisTxt(user.address)}</Td> : <Td>{user.address}</Td>}
                 </Tr>
               </Tbody>
             </Table>
@@ -123,19 +167,27 @@ function User({ user }) {
               </Thead>
               <Tbody>
                 <Tr _hover={{ bgColor: hoverTrColor }} cursor="pointer">
-                  <Td>{bioValue}</Td>
+                  <Td width={'full'}>{pulledBio}</Td>
+                </Tr>
+              </Tbody>
+            </Table>
+
+            <Table>
+              <Tbody>
+                <Tr>
                   <Td>
                     {
                       <Input
+                        id="aboutInput"
                         onChange={(e) => changeBioValue(e.target.value)}
                         placeholder={'New About You?'}
-                        value={undefined}
+                        value={inputValueBio}
                       ></Input>
                     }
                   </Td>
                   <Td>
                     {
-                      <Button onClick={() => updateUserInfo()}>
+                      <Button onClick={() => updateUserBio()}>
                         <RepeatIcon></RepeatIcon>{' '}
                       </Button>
                     }

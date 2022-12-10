@@ -24,16 +24,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return { props: { error: 'Connect your wallet first' } };
   }
 
-  await connectDB();
-
   const userB = {
     address: session?.user.address,
   };
 
+  await connectDB();
+
   const userM = await Users.findOne({
     profileId: session?.user.profileId,
   }).lean();
-  console.log('userB:', userB);
 
   const userData = { address: userB?.address, profileId: userM?.profileId, bio: userM?.bio, username: userM?.username };
 
