@@ -18,9 +18,11 @@ import {
   GridItem,
   Avatar,
   useBoolean,
+  Textarea,
 } from '@chakra-ui/react';
 import { RepeatIcon } from '@chakra-ui/icons';
 import { getEllipsisTxt } from 'utils/format';
+import copy from 'copy-to-clipboard';
 
 function User({ user }) {
   const hoverTrColor = useColorModeValue('gray.100', 'gray.700');
@@ -36,7 +38,20 @@ function User({ user }) {
   const [inputValueName, changeInputValueName] = useState(undefined);
   const [inputValueBio, changeInputValueBio] = useState(undefined);
 
+  const [copyText, setCopyText] = useState('');
+
+  const userProfileId = user.profileId;
+
   useEffect(() => console.log('user: ', user), [user]);
+
+  const handleCopyText = (e) => {
+    setCopyText(e.target.value);
+  };
+
+  const copyToClipboard = () => {
+    copy(copyText);
+    console.log(`You have copied: ${copyText}`);
+  };
 
   async function updateUserBio() {
     const { data } = await axios.post(
@@ -98,7 +113,19 @@ function User({ user }) {
                   onMouseLeave={setProfileIdHovered.off}
                   cursor="pointer"
                 >
-                  {!profileIdHovered ? <Td>{getEllipsisTxt(user.profileId)}</Td> : <Td>{user.profileId}</Td>}
+                  {profileIdHovered ? (
+                    <Td onChange={handleCopyText} value={copyText}>
+                      {userProfileId}
+                    </Td>
+                  ) : (
+                    <Td>{getEllipsisTxt(userProfileId)}</Td>
+                  )}
+                  <Td>
+                    {' '}
+                    <Button onClick={copyToClipboard}>
+                      <RepeatIcon></RepeatIcon>
+                    </Button>
+                  </Td>
                 </Tr>
               </Tbody>
             </Table>
@@ -110,7 +137,7 @@ function User({ user }) {
               </Thead>
               <Tbody>
                 <Tr _hover={{ bgColor: hoverTrColor }} cursor="pointer">
-                  <Td width={'full'}>{pulledName}</Td>
+                  <Td>{pulledName}</Td>
                 </Tr>
               </Tbody>
             </Table>
@@ -127,7 +154,7 @@ function User({ user }) {
                         onChange={(e) => {
                           changeNameValue(e.target.value);
                         }}
-                        placeholder={'Change Username'}
+                        placeholder={'How about a cool Username?'}
                         value={inputValueName}
                       ></Input>
                     }
@@ -167,7 +194,7 @@ function User({ user }) {
               </Thead>
               <Tbody>
                 <Tr _hover={{ bgColor: hoverTrColor }} cursor="pointer">
-                  <Td width={'full'}>{pulledBio}</Td>
+                  <Td id="pWrap">{pulledBio}</Td>
                 </Tr>
               </Tbody>
             </Table>
@@ -177,12 +204,22 @@ function User({ user }) {
                 <Tr>
                   <Td>
                     {
-                      <Input
-                        id="aboutInput"
-                        onChange={(e) => changeBioValue(e.target.value)}
-                        placeholder={'New About You?'}
-                        value={inputValueBio}
-                      ></Input>
+                      <>
+                        <style>
+                          {`#pWrap {
+          white-space: pre-line;
+        }`}
+                        </style>
+                        <Textarea
+                          id="aboutInput"
+                          type="textarea"
+                          rows={3}
+                          onChange={(e) => changeBioValue(e.target.value)}
+                          placeholder={'So, what´s up with You?'}
+                          value={inputValueBio}
+                          resize={'none'}
+                        ></Textarea>
+                      </>
                     }
                   </Td>
                   <Td>

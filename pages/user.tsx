@@ -18,7 +18,9 @@ const userPage: NextPage<IUserData> = (props) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
 
-  await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
+  if (!Moralis.Core.isStarted) {
+    await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
+  }
 
   if (!session?.user.address) {
     return { props: { error: 'Connect your wallet first' } };
