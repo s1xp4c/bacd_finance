@@ -15,13 +15,11 @@ const TransactionsPage: NextPage<ITransactions> = (props) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
 
-  await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
-
   if (!session?.user.address) {
     return { props: { error: 'Connect your wallet first' } };
   }
 
-  const transactions = await Moralis.EvmApi.account.getTransactions({
+  const transactions = await Moralis.EvmApi.transaction.getWalletTransactions({
     address: session?.user.address,
     chain: process.env.APP_CHAIN_ID,
   });
