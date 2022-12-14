@@ -1,6 +1,6 @@
 type Erc20Value =
   | {
-      value: string;
+      value: number | number;
       token: {
         contractAddress: string;
         chain: string | number;
@@ -13,7 +13,7 @@ type Erc20Value =
       };
     }
   | {
-      value: string;
+      value: number | number;
       token?: undefined;
     };
 export interface IERC20Balances {

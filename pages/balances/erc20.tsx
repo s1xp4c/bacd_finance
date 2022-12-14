@@ -28,8 +28,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const tokensWithLogosAdded = balances.toJSON().map((balance) => ({
     ...balance,
+    value: balance.balance,
     token: {
-      ...balance,
+      address: balance.token_address,
+      name: balance.name,
+      symbol: balance.symbol,
       logo: getErc20LogoAddress({
         blockchain: 'ethereum',
         address: EvmAddress.create(balance?.token_address || '').checksum,

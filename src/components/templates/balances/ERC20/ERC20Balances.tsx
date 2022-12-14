@@ -24,6 +24,7 @@ const ERC20Balances: FC<IERC20Balances> = ({ balances }) => {
 
   useEffect(() => console.log('balances: ', balances), [balances]);
 
+  const valueDivider = 1e18;
   return (
     <>
       <Heading size="lg" marginBottom={6}>
@@ -54,7 +55,7 @@ const ERC20Balances: FC<IERC20Balances> = ({ balances }) => {
                         </VStack>
                       </HStack>
                     </Td>
-                    <Td>{value}</Td>
+                    <Td>{(value / valueDivider).toFixed(8)}</Td>
                     <Td isNumeric>{getEllipsisTxt(token?.contractAddress || '')}</Td>
                   </Tr>
                 ))}
