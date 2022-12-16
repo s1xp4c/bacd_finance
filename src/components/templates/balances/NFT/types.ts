@@ -1,6 +1,3 @@
-import { EvmNftMetadataData } from '@moralisweb3/common-evm-utils';
-import { MoralisDataObjectValue } from '@moralisweb3/common-core';
-
 export type TNFTBalance = {
   tokenAddress: string;
   chain: string | number;
@@ -8,10 +5,14 @@ export type TNFTBalance = {
   blockNumberMinted: string | undefined;
   blockNumber: string | undefined;
   tokenId: string | number;
-  contractType: EvmNftMetadataData;
+  contractType: string;
   tokenUri?: string | undefined;
   tokenHash?: string | undefined;
-  metadata: MoralisDataObjectValue;
+  metadata: {
+    name: string;
+    description: string;
+    image_url: string;
+  };
   name?: string | undefined;
   symbol?: string | undefined;
   lastMetadataSync?: Date | undefined;

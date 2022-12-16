@@ -18,7 +18,7 @@ const NFTBalances: FC<INFTBalances> = ({ balances }) => {
           ))}
         </Grid>
       ) : (
-        <Box>Looks Like you do not have any NFTs</Box>
+        <Box>Looks Like you do not have any NFT´s, or you´re not connected</Box>
       )}
     </>
   );
