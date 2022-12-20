@@ -1,4 +1,4 @@
-import { CheckCircleIcon, WarningTwoIcon } from '@chakra-ui/icons';
+import { CheckCircleIcon, SettingsIcon } from '@chakra-ui/icons';
 import { Heading, VStack, List, ListIcon, ListItem, Grid, GridItem, useColorModeValue } from '@chakra-ui/react';
 
 const Home = () => {
@@ -56,28 +56,28 @@ const Home = () => {
           <List spacing={4}>
             <ListItem borderBottom="2px" borderBottomColor={hoverLiColor}>
               <Heading size="md" marginBottom={1}>
-                <ListIcon as={WarningTwoIcon} color="yellow.500" />
+                <ListIcon as={SettingsIcon} color="yellow.500" />
                 In Progress
               </Heading>
             </ListItem>
             <ListItem>
-              <ListIcon as={WarningTwoIcon} color="yellow.500" />
+              <ListIcon as={SettingsIcon} color="yellow.500" />
               IPFS File upload
             </ListItem>
             <ListItem>
-              <ListIcon as={WarningTwoIcon} color="yellow.500" />
+              <ListIcon as={SettingsIcon} color="yellow.500" />
               ICO/STO Presale stats
             </ListItem>
             <ListItem>
-              <ListIcon as={WarningTwoIcon} color="yellow.500" />
+              <ListIcon as={SettingsIcon} color="yellow.500" />
               Decentralized Swap function
             </ListItem>
             <ListItem>
-              <ListIcon as={WarningTwoIcon} color="yellow.500" />
+              <ListIcon as={SettingsIcon} color="yellow.500" />
               Voting integration
             </ListItem>
             <ListItem>
-              <ListIcon as={WarningTwoIcon} color="yellow.500" />
+              <ListIcon as={SettingsIcon} color="yellow.500" />
               Real Time Coin charts
             </ListItem>
           </List>

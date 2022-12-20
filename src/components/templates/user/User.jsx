@@ -19,10 +19,12 @@ import {
   Avatar,
   useBoolean,
   Textarea,
+  Alert,
+  AlertIcon,
 } from '@chakra-ui/react';
-import { RepeatIcon } from '@chakra-ui/icons';
+import { EditIcon, CopyIcon } from '@chakra-ui/icons';
 import { getEllipsisTxt } from 'utils/format';
-import copy from 'copy-to-clipboard';
+import ultralightCopy from 'copy-to-clipboard-ultralight';
 
 function User({ user }) {
   const hoverTrColor = useColorModeValue('gray.100', 'gray.700');
@@ -38,19 +40,13 @@ function User({ user }) {
   const [inputValueName, changeInputValueName] = useState(undefined);
   const [inputValueBio, changeInputValueBio] = useState(undefined);
 
-  const [copyText, setCopyText] = useState('');
-
   const userProfileId = user.profileId;
+  const userAddress = user.address;
 
   useEffect(() => console.log('user: ', user), [user]);
 
-  const handleCopyText = (e) => {
-    setCopyText(e.target.value);
-  };
-
-  const copyToClipboard = () => {
-    copy(copyText);
-    console.log(`You have copied: ${copyText}`);
+  const copyToClipboard = (e) => {
+    ultralightCopy(e);
   };
 
   async function updateUserBio() {
@@ -85,13 +81,12 @@ function User({ user }) {
 
   return (
     <>
-      <Grid templateColumns="repeat(5, 1fr)" gap={4}>
-        <GridItem colSpan={2}>
-          <Box>
-            <Avatar></Avatar>
-          </Box>
-        </GridItem>
-        <GridItem colSpan={3}>
+      {/* <Alert status="success" variant="top-accent">
+        <AlertIcon />
+        Profile ID copied to clipboard! - Paste it anywhere...
+      </Alert> */}
+      <Grid templateColumns="repeat(1, 1fr)" gap={4}>
+        <GridItem colSpan={1}>
           <Heading size="lg" marginBottom={6}>
             User Info
           </Heading>
@@ -99,11 +94,16 @@ function User({ user }) {
       </Grid>
       {user ? (
         <Box border="2px" borderColor={hoverTrColor} borderRadius="xl" padding="26px 18px">
-          <TableContainer w={'full'}>
+          <TableContainer>
             <Table>
               <Thead>
                 <Tr>
                   <Th>User ID:</Th>
+                  <Th textAlign={'right'}>
+                    <Box>
+                      <Avatar></Avatar>
+                    </Box>
+                  </Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -113,17 +113,11 @@ function User({ user }) {
                   onMouseLeave={setProfileIdHovered.off}
                   cursor="pointer"
                 >
-                  {profileIdHovered ? (
-                    <Td onChange={handleCopyText} value={copyText}>
-                      {userProfileId}
-                    </Td>
-                  ) : (
-                    <Td>{getEllipsisTxt(userProfileId)}</Td>
-                  )}
-                  <Td>
+                  {profileIdHovered ? <Td>{userProfileId}</Td> : <Td>{getEllipsisTxt(userProfileId)}</Td>}
+                  <Td textAlign={'right'} w={'20px'}>
                     {' '}
-                    <Button onClick={copyToClipboard}>
-                      <RepeatIcon></RepeatIcon>
+                    <Button onClick={copyToClipboard(userProfileId)}>
+                      <CopyIcon></CopyIcon>
                     </Button>
                   </Td>
                 </Tr>
@@ -133,11 +127,13 @@ function User({ user }) {
               <Thead>
                 <Tr>
                   <Th>Username:</Th>
+                  <Th></Th>
                 </Tr>
               </Thead>
               <Tbody>
                 <Tr _hover={{ bgColor: hoverTrColor }} cursor="pointer">
                   <Td>{pulledName}</Td>
+                  <Td></Td>
                 </Tr>
               </Tbody>
             </Table>
@@ -150,19 +146,18 @@ function User({ user }) {
                     {
                       <Input
                         id="nameInput"
-                        width={'full'}
                         onChange={(e) => {
                           changeNameValue(e.target.value);
                         }}
-                        placeholder={'How about a cool Username?'}
+                        placeholder={'Update your cool Username?'}
                         value={inputValueName}
                       ></Input>
                     }
                   </Td>
-                  <Td>
+                  <Td textAlign={'right'} w={'20px'}>
                     {
                       <Button onClick={() => updateUserName()}>
-                        <RepeatIcon></RepeatIcon>{' '}
+                        <EditIcon></EditIcon>{' '}
                       </Button>
                     }
                   </Td>
@@ -182,7 +177,13 @@ function User({ user }) {
                   onMouseLeave={setAddressHovered.off}
                   cursor="pointer"
                 >
-                  {!addressHovered ? <Td>{getEllipsisTxt(user.address)}</Td> : <Td>{user.address}</Td>}
+                  {!addressHovered ? <Td>{getEllipsisTxt(userAddress)}</Td> : <Td>{userAddress}</Td>}
+                  <Td textAlign={'right'} w={'20px'}>
+                    {' '}
+                    <Button onClick={copyToClipboard(userAddress)}>
+                      <CopyIcon></CopyIcon>
+                    </Button>
+                  </Td>
                 </Tr>
               </Tbody>
             </Table>
@@ -190,11 +191,13 @@ function User({ user }) {
               <Thead>
                 <Tr>
                   <Th>About You</Th>
+                  <Th></Th>
                 </Tr>
               </Thead>
               <Tbody>
                 <Tr _hover={{ bgColor: hoverTrColor }} cursor="pointer">
                   <Td id="pWrap">{pulledBio}</Td>
+                  <Td></Td>
                 </Tr>
               </Tbody>
             </Table>
@@ -222,10 +225,10 @@ function User({ user }) {
                       </>
                     }
                   </Td>
-                  <Td>
+                  <Td textAlign={'right'} w={'20px'}>
                     {
                       <Button onClick={() => updateUserBio()}>
-                        <RepeatIcon></RepeatIcon>{' '}
+                        <EditIcon></EditIcon>{' '}
                       </Button>
                     }
                   </Td>
