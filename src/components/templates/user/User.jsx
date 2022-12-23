@@ -19,9 +19,10 @@ import {
   Avatar,
   useBoolean,
   Textarea,
-  Alert,
-  AlertIcon,
+  useToast,
+  keyframes,
 } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import { EditIcon, CopyIcon } from '@chakra-ui/icons';
 import { getEllipsisTxt } from 'utils/format';
 import ultralightCopy from 'copy-to-clipboard-ultralight';
@@ -40,13 +41,23 @@ function User({ user }) {
   const [inputValueName, changeInputValueName] = useState(undefined);
   const [inputValueBio, changeInputValueBio] = useState(undefined);
 
+  const animationKeyframes = keyframes`
+  0% { transform: scale(1) rotate(0); border-radius: 20%; }
+  100% { transform: scale(0) rotate(0); border-radius: 20%; }
+`;
+  const animation = `${animationKeyframes} 4s ease-out `;
+
+  const toast = useToast();
+
   const userProfileId = user.profileId;
   const userAddress = user.address;
 
   useEffect(() => console.log('user: ', user), [user]);
 
   const copyToClipboard = (e) => {
-    ultralightCopy(e);
+    if (e) {
+      ultralightCopy(e);
+    }
   };
 
   async function updateUserBio() {
@@ -81,10 +92,6 @@ function User({ user }) {
 
   return (
     <>
-      {/* <Alert status="success" variant="top-accent">
-        <AlertIcon />
-        Profile ID copied to clipboard! - Paste it anywhere...
-      </Alert> */}
       <Grid templateColumns="repeat(1, 1fr)" gap={4}>
         <GridItem colSpan={1}>
           <Heading size="lg" marginBottom={6}>
@@ -92,15 +99,16 @@ function User({ user }) {
           </Heading>
         </GridItem>
       </Grid>
+
       {user ? (
-        <Box border="2px" borderColor={hoverTrColor} borderRadius="xl" padding="26px 18px">
+        <Box border="2px" borderColor={hoverTrColor} borderRadius="xl" padding="26px 18px" userSelect={'none'}>
           <TableContainer>
             <Table>
               <Thead>
                 <Tr>
                   <Th>User ID:</Th>
                   <Th textAlign={'right'}>
-                    <Box>
+                    <Box as={motion.div} animation={animation}>
                       <Avatar></Avatar>
                     </Box>
                   </Th>
@@ -116,9 +124,24 @@ function User({ user }) {
                   {profileIdHovered ? <Td>{userProfileId}</Td> : <Td>{getEllipsisTxt(userProfileId)}</Td>}
                   <Td textAlign={'right'} w={'20px'}>
                     {' '}
-                    <Button onClick={copyToClipboard(userProfileId)}>
-                      <CopyIcon></CopyIcon>
-                    </Button>
+                    <Box
+                      onClick={() =>
+                        toast({
+                          position: 'top',
+                          title: 'Great!',
+                          description: 'User ID copied to clipboard.',
+                          status: 'success',
+                          duration: 3000,
+                          isClosable: false,
+                          variant: 'solid',
+                          motionPreset: 'slide-in-top',
+                        })
+                      }
+                    >
+                      <Button onClick={copyToClipboard(userProfileId)}>
+                        <CopyIcon></CopyIcon>
+                      </Button>
+                    </Box>
                   </Td>
                 </Tr>
               </Tbody>
@@ -180,9 +203,24 @@ function User({ user }) {
                   {!addressHovered ? <Td>{getEllipsisTxt(userAddress)}</Td> : <Td>{userAddress}</Td>}
                   <Td textAlign={'right'} w={'20px'}>
                     {' '}
-                    <Button onClick={copyToClipboard(userAddress)}>
-                      <CopyIcon></CopyIcon>
-                    </Button>
+                    <Box
+                      onClick={() =>
+                        toast({
+                          position: 'top',
+                          title: 'Success!',
+                          description: 'Wallet Address copied to clipboard.',
+                          status: 'success',
+                          duration: 3000,
+                          isClosable: false,
+                          variant: 'solid',
+                          motionPreset: 'slide-in-top',
+                        })
+                      }
+                    >
+                      <Button onClick={copyToClipboard(userAddress)}>
+                        <CopyIcon></CopyIcon>
+                      </Button>
+                    </Box>
                   </Td>
                 </Tr>
               </Tbody>
@@ -243,5 +281,4 @@ function User({ user }) {
     </>
   );
 }
-
 export default User;
