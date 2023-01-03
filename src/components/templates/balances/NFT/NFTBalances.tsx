@@ -5,7 +5,6 @@ import { INFTBalances } from './types';
 
 const NFTBalances: FC<INFTBalances> = ({ balances, envName }) => {
   useEffect(() => console.log('Balances: ', balances), [balances]);
-  useEffect(() => console.log('ENVName: ', envName), [envName]);
 
   return (
     <>

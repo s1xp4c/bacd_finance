@@ -24,13 +24,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     address: session?.user.address,
   });
 
-  console.log('Resolved ENVName: ', { resolvedEnvName });
-
   const balances = await Moralis.EvmApi.nft.getWalletNFTs({
     address: session?.user.address,
     chain: process.env.APP_CHAIN_ID,
   });
-  // (balances.result).filter((balance)=> balance.result.)
 
   return {
     props: {

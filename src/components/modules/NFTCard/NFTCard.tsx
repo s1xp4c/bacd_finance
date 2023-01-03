@@ -16,7 +16,6 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
   const bgGradient = 'linear(to-r, blue.500, blue.700, blue.500)';
   const hoverTrColor = useColorModeValue('gray.100', 'gray.700');
 
-  useEffect(() => console.log('ENVName from card: ', name), [name]);
   useEffect(() => {
     if (symbol === 'ENS') {
       console.log('ENVName from card: ', name);
@@ -44,7 +43,7 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
         margin={'8px 0 8px 0'}
       >
         <Box as="h4" noOfLines={1} fontWeight="medium" fontSize="sm">
-          NAME:
+          NAME
         </Box>
         <Box as="h4" noOfLines={1} fontSize="sm">
           {isENS ? name : metadata?.name}

@@ -21,7 +21,9 @@ export type TNFTBalance = {
 };
 
 export type TENVName = {
-  envName?: string | undefined;
+  envName?: {
+    name?: string | undefined;
+  };
 };
 
 export interface INFTBalances {
