@@ -3,8 +3,9 @@ import { NFTCard } from 'components/modules';
 import { FC, useEffect } from 'react';
 import { INFTBalances } from './types';
 
-const NFTBalances: FC<INFTBalances> = ({ balances }) => {
+const NFTBalances: FC<INFTBalances> = ({ balances, envName }) => {
   useEffect(() => console.log('Balances: ', balances), [balances]);
+  useEffect(() => console.log('ENVName: ', envName), [envName]);
 
   return (
     <>
@@ -12,9 +13,9 @@ const NFTBalances: FC<INFTBalances> = ({ balances }) => {
         NFT Balances
       </Heading>
       {balances?.length ? (
-        <Grid templateColumns="repeat(auto-fit, minmax(280px, 1fr))" gap={6}>
+        <Grid templateColumns="repeat(auto-fit, minmax(280px, 1fr))" gap={2} textAlign="center">
           {balances.map((balance, key) => (
-            <NFTCard {...balance} key={key} />
+            <NFTCard {...balance} {...envName} key={key} />
           ))}
         </Grid>
       ) : (

@@ -1,7 +1,8 @@
-import { TNFTBalance } from 'components/templates/balances/NFT/types';
+import { TENVName, TNFTBalance } from 'components/templates/balances/NFT/types';
 
 export interface INFTCard
   extends Pick<
-    TNFTBalance,
-    'amount' | 'contractType' | 'name' | 'symbol' | 'tokenAddress' | 'tokenId' | 'metadata' | 'ownerOf'
-  > {}
+      TNFTBalance,
+      'amount' | 'contractType' | 'name' | 'symbol' | 'tokenAddress' | 'tokenId' | 'metadata' | 'ownerOf'
+    >,
+    TENVName {}

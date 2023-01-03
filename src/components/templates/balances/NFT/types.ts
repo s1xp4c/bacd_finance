@@ -20,6 +20,11 @@ export type TNFTBalance = {
   amount?: number | undefined;
 };
 
+export type TENVName = {
+  envName?: string | undefined;
+};
+
 export interface INFTBalances {
   balances?: TNFTBalance[];
+  envName?: TENVName[];
 }

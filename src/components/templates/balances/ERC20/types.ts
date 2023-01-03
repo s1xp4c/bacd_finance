@@ -1,10 +1,12 @@
 type Erc20Value =
   | {
       value: number | number;
+      balance: number | number;
+      decimals: number | number;
+      token_address: string | null | undefined;
       token: {
-        contractAddress: string;
+        address: string;
         chain: string | number;
-        decimals: number;
         name: string;
         symbol: string;
         logo?: string | null | undefined;
@@ -15,6 +17,9 @@ type Erc20Value =
   | {
       value: number | number;
       token?: undefined;
+      balance: number | number;
+      decimals: number | number;
+      token_address: string | null | undefined;
     };
 export interface IERC20Balances {
   balances?: Erc20Value[];

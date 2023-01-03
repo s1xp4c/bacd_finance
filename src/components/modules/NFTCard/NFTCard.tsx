@@ -1,9 +1,11 @@
 import { Box, HStack, Image, SimpleGrid, useColorModeValue, useBoolean } from '@chakra-ui/react';
 import { Eth } from '@web3uikit/icons';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { resolveIPFS } from 'utils/resolveIPFS';
+
 import { INFTCard } from './types';
 import { getEllipsisTxt } from 'utils/format';
+import { EnsLogo } from 'components/elements';
 
 const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, tokenAddress }) => {
   const [isENS, setIsENS] = useBoolean();
@@ -14,15 +16,14 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
   const bgGradient = 'linear(to-r, blue.500, blue.700, blue.500)';
   const hoverTrColor = useColorModeValue('gray.100', 'gray.700');
 
-  if (symbol === 'ENS') {
-    // eslint-disable-next-line no-unused-expressions
-    setIsENS.on;
-    console.log('Ethereum Name Service detected');
-  } else {
-    // eslint-disable-next-line no-unused-expressions
-    setIsENS.off;
-    console.log('Ethereum Name Service NOT detected');
-  }
+  useEffect(() => console.log('ENVName from card: ', name), [name]);
+  useEffect(() => {
+    if (symbol === 'ENS') {
+      console.log('ENVName from card: ', name);
+      return setIsENS.on;
+    }
+    return setIsENS.off;
+  });
 
   return (
     <Box
@@ -34,16 +35,36 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
       borderWidth="1px"
       borderColor={borderColor}
     >
-      <Box maxHeight="260px" overflow={'hidden'} borderRadius="xl">
-        <Image
-          src={resolveIPFS(metadata?.image_url as unknown as string)}
-          alt={'nft'}
-          minH="260px"
-          minW="260px"
-          boxSize="100%"
-          objectFit="fill"
-        />
+      <Box
+        border="2px"
+        borderColor={hoverTrColor}
+        bgColor={descBgColor}
+        borderRadius="xl"
+        padding="8px 8px"
+        margin={'8px 0 8px 0'}
+      >
+        <Box as="h4" noOfLines={1} fontWeight="medium" fontSize="sm">
+          NAME:
+        </Box>
+        <Box as="h4" noOfLines={1} fontSize="sm">
+          {isENS ? name : metadata?.name}
+        </Box>
       </Box>
+
+      {isENS ? (
+        <EnsLogo />
+      ) : (
+        <Box maxHeight="260px" overflow={'hidden'} borderRadius="xl">
+          <Image
+            src={resolveIPFS(metadata?.image_url as unknown as string)}
+            alt={'nft'}
+            minH="260px"
+            minW="260px"
+            boxSize="100%"
+            objectFit="fill"
+          />
+        </Box>
+      )}
       <SimpleGrid
         columns={2}
         spacing={4}
@@ -54,7 +75,7 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
         border="2px"
         borderColor={hoverTrColor}
       >
-        <Box>
+        <Box textAlign={'left'}>
           <Box as="h4" noOfLines={1} fontWeight="medium" fontSize="sm">
             SYMBOL
           </Box>
@@ -80,26 +101,10 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
         marginTop={'8px'}
       >
         <Box as="h4" noOfLines={1} fontWeight="medium" fontSize="sm">
-          NFT ADDRESS:
+          NFT ADDRESS
         </Box>
         <Box as="h4" noOfLines={1} fontSize="sm">
           {getEllipsisTxt(tokenAddress)}
-        </Box>
-      </Box>
-
-      <Box
-        border="2px"
-        borderColor={hoverTrColor}
-        bgColor={descBgColor}
-        borderRadius="xl"
-        padding="8px 8px"
-        marginTop={'8px'}
-      >
-        <Box as="h4" noOfLines={1} fontWeight="medium" fontSize="sm">
-          NFT INCEPTION ORIGIN:
-        </Box>
-        <Box as="h4" noOfLines={1} fontSize="sm">
-          {name}
         </Box>
       </Box>
       <HStack alignItems={'center'} w={'full'}>
@@ -110,16 +115,17 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
           borderRadius="xl"
           padding="8px 8px"
           marginTop={'8px'}
+          textAlign="left"
         >
           <Box as="h4" noOfLines={1} fontWeight="medium" fontSize="sm">
-            CONTRACT TYPE:
+            CONTRACT TYPE
           </Box>
 
           <Box as="h4" noOfLines={1} fontWeight="medium" fontSize="smaller">
             {contractType}
           </Box>
         </Box>
-        <Box>
+        <Box alignContent={'right'} paddingLeft="100">
           <Eth fontSize="50px" />
         </Box>
       </HStack>
@@ -160,11 +166,15 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
           objectFit="fill"
         >
           <Box mt="1" as="h4" noOfLines={1} fontWeight="medium" fontSize="sm">
-            RESOLVED ENS NAME:
+            DESCRIPTION:
           </Box>
 
           <Box as="h4" fontSize="sm">
-            {'Your ENS Name'}
+            <p>
+              {' '}
+              Your ENS Domain: <b>{name}</b> is your Identifier on the Ethereum Network and can be used as your Wallet
+              Address for receiving Tokens and Assets.
+            </p>
           </Box>
         </Box>
       )}

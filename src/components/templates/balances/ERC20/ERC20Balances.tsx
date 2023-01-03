@@ -21,10 +21,9 @@ import { IERC20Balances } from './types';
 
 const ERC20Balances: FC<IERC20Balances> = ({ balances }) => {
   const hoverTrColor = useColorModeValue('gray.100', 'gray.700');
-
+  const valueFirst = '1e';
   useEffect(() => console.log('balances: ', balances), [balances]);
 
-  const valueDivider = 1e18;
   return (
     <>
       <Heading size="lg" marginBottom={6}>
@@ -42,7 +41,7 @@ const ERC20Balances: FC<IERC20Balances> = ({ balances }) => {
                 </Tr>
               </Thead>
               <Tbody>
-                {balances?.map(({ token, value }, key) => (
+                {balances?.map(({ token, value, decimals, token_address }, key) => (
                   <Tr key={`${token?.symbol}-${key}-tr`} _hover={{ bgColor: hoverTrColor }} cursor="pointer">
                     <Td>
                       <HStack>
@@ -55,8 +54,12 @@ const ERC20Balances: FC<IERC20Balances> = ({ balances }) => {
                         </VStack>
                       </HStack>
                     </Td>
-                    <Td>{(value / valueDivider).toFixed(8)}</Td>
-                    <Td isNumeric>{getEllipsisTxt(token?.contractAddress || '')}</Td>
+                    <Td>
+                      {(value / ((valueFirst as unknown as number) + ((decimals as unknown as number) || 18))).toFixed(
+                        5,
+                      )}
+                    </Td>
+                    <Td isNumeric>{getEllipsisTxt((token_address as unknown as string) || '')}</Td>
                   </Tr>
                 ))}
               </Tbody>
