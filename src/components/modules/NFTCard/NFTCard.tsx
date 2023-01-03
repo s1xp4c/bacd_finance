@@ -46,13 +46,11 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
           NAME
         </Box>
         <Box as="h4" noOfLines={1} fontSize="sm">
-          {isENS ? name : metadata?.name}
+          {!isENS ? metadata?.name : name}
         </Box>
       </Box>
 
-      {isENS ? (
-        <EnsLogo />
-      ) : (
+      {!isENS ? (
         <Box maxHeight="260px" overflow={'hidden'} borderRadius="xl">
           <Image
             src={resolveIPFS(metadata?.image_url as unknown as string)}
@@ -63,6 +61,8 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
             objectFit="fill"
           />
         </Box>
+      ) : (
+        <EnsLogo />
       )}
       <SimpleGrid
         columns={2}
