@@ -1,20 +1,30 @@
-import { Box, HStack, Image, SimpleGrid, useColorModeValue, useBoolean } from '@chakra-ui/react';
+import { Box, Image, SimpleGrid, useColorModeValue, useBoolean, useToast, Button } from '@chakra-ui/react';
 import { Eth } from '@web3uikit/icons';
-import { FC, useEffect } from 'react';
+import { FC, MouseEvent, useEffect } from 'react';
 import { resolveIPFS } from 'utils/resolveIPFS';
-
-import { INFTCard } from './types';
+import { CopyIcon } from '@chakra-ui/icons';
 import { getEllipsisTxt } from 'utils/format';
+import ultralightCopy from 'copy-to-clipboard-ultralight';
+import { INFTCard } from './types';
 import { EnsLogo } from 'components/elements';
 
 const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, tokenAddress }) => {
   const [isENS, setIsENS] = useBoolean();
+  const [addressHovered, setAddressHovered] = useBoolean();
 
   const bgColor = useColorModeValue('none', 'blue.700');
   const borderColor = useColorModeValue('blue.200', 'blue.700');
   const descBgColor = useColorModeValue('blue.100', 'blue.600');
   const bgGradient = 'linear(to-r, blue.500, blue.700, blue.500)';
   const hoverTrColor = useColorModeValue('gray.100', 'gray.700');
+
+  const toast = useToast();
+
+  const copyToClipboard = (e: string | undefined) => {
+    if (e) {
+      ultralightCopy(e);
+    }
+  };
 
   useEffect(() => {
     if (symbol === 'ENS') {
@@ -23,6 +33,20 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
     }
     return setIsENS.off;
   });
+
+  // eslint-disable-next-line no-undef
+  const preventRightClick = (e: MouseEvent<HTMLImageElement, globalThis.MouseEvent>) => {
+    e.preventDefault();
+    toast({
+      position: 'top',
+      title: 'Sorry!',
+      description: 'You are NOT allowed to copy NFT´s',
+      status: 'error',
+      duration: 3000,
+      isClosable: false,
+      variant: 'solid',
+    });
+  };
 
   return (
     <Box
@@ -59,6 +83,7 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
             minW="260px"
             boxSize="100%"
             objectFit="fill"
+            onContextMenu={(e) => preventRightClick(e)}
           />
         </Box>
       ) : (
@@ -98,36 +123,69 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
         borderRadius="xl"
         padding="8px 8px"
         marginTop={'8px'}
+        textAlign={'left'}
       >
-        <Box as="h4" noOfLines={1} fontWeight="medium" fontSize="sm">
-          NFT ADDRESS
-        </Box>
-        <Box as="h4" noOfLines={1} fontSize="sm">
-          {getEllipsisTxt(tokenAddress)}
-        </Box>
+        <SimpleGrid columns={2} spacing={4}>
+          <Box>
+            <Box as="h4" noOfLines={1} fontWeight="medium" fontSize="sm">
+              NFT ADDRESS
+            </Box>
+            <Box
+              as="h4"
+              noOfLines={1}
+              fontSize="sm"
+              onMouseEnter={setAddressHovered.on}
+              onMouseLeave={setAddressHovered.off}
+              cursor="pointer"
+            >
+              {!addressHovered ? <Box>{getEllipsisTxt(tokenAddress)}</Box> : <Box>{tokenAddress}</Box>}
+            </Box>
+          </Box>
+          <Box textAlign={'right'} w={'20px'}>
+            <Box
+              onClick={() =>
+                toast({
+                  position: 'top',
+                  title: 'Success!',
+                  description: 'NFT Address copied to clipboard.',
+                  status: 'success',
+                  duration: 3000,
+                  isClosable: false,
+                  variant: 'solid',
+                })
+              }
+            >
+              <Button onClick={() => copyToClipboard(tokenAddress)}>
+                <CopyIcon></CopyIcon>
+              </Button>
+            </Box>
+          </Box>
+        </SimpleGrid>
       </Box>
-      <HStack alignItems={'center'} w={'full'}>
-        <Box
-          border="2px"
-          borderColor={hoverTrColor}
-          bgColor={descBgColor}
-          borderRadius="xl"
-          padding="8px 8px"
-          marginTop={'8px'}
-          textAlign="left"
-        >
+      <SimpleGrid
+        columns={2}
+        spacing={4}
+        bgColor={descBgColor}
+        padding={2.5}
+        borderRadius="xl"
+        marginTop={2}
+        border="2px"
+        borderColor={hoverTrColor}
+      >
+        <Box textAlign={'left'}>
           <Box as="h4" noOfLines={1} fontWeight="medium" fontSize="sm">
             CONTRACT TYPE
           </Box>
-
-          <Box as="h4" noOfLines={1} fontWeight="medium" fontSize="smaller">
+          <Box as="h4" noOfLines={1} fontSize="sm">
             {contractType}
           </Box>
         </Box>
-        <Box alignContent={'right'} paddingLeft="100">
-          <Eth fontSize="50px" />
+        <Box textAlign={'right'}>
+          <Box as="h4" noOfLines={1} fontWeight="medium" fontSize="sm" paddingLeft="90">
+            <Eth fontSize="40px" />
+          </Box>
         </Box>
-      </HStack>
+      </SimpleGrid>
       {!isENS ? (
         <Box
           id="pWrap"

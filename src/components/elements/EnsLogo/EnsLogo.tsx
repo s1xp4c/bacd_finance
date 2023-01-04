@@ -12,6 +12,7 @@ const EnsLogo = () => {
         minW="260px"
         boxSize="100%"
         objectFit="fill"
+        onContextMenu={(e) => e.preventDefault()}
       />
     </Box>
   );

@@ -49,6 +49,18 @@ const Home = () => {
               <ListIcon as={CheckCircleIcon} color="green.500" />
               Decentralized wallet info
             </ListItem>
+            <ListItem>
+              <ListIcon as={CheckCircleIcon} color="green.500" />
+              Wallet Copy Functions
+            </ListItem>
+            <ListItem>
+              <ListIcon as={CheckCircleIcon} color="green.500" />
+              NFT Copy Protection
+            </ListItem>
+            <ListItem>
+              <ListIcon as={CheckCircleIcon} color="green.500" />
+              Resolve ENS Domains
+            </ListItem>
           </List>
         </GridItem>
 

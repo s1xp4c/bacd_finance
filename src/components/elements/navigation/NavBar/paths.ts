@@ -39,8 +39,8 @@ const NAV_LINKS: ISubNav[] = [
         logo: 'token',
       },
       {
-        label: 'NFT',
-        subLabel: 'Get your ERC721 and ERC1155 balances',
+        label: 'NFT & ENS',
+        subLabel: 'Get your ERC721 and ERC1155 holdings',
         href: '/balances/nft',
         logo: 'pack',
       },
