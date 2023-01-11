@@ -1,4 +1,14 @@
-import { Box, Image, SimpleGrid, useColorModeValue, useBoolean, useToast, Button } from '@chakra-ui/react';
+import {
+  Box,
+  Image,
+  SimpleGrid,
+  useColorModeValue,
+  useBoolean,
+  useToast,
+  Button,
+  Grid,
+  GridItem,
+} from '@chakra-ui/react';
 import { Eth } from '@web3uikit/icons';
 import { FC, MouseEvent, useEffect } from 'react';
 import { resolveIPFS } from 'utils/resolveIPFS';
@@ -125,8 +135,8 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
         marginTop={'8px'}
         textAlign={'left'}
       >
-        <SimpleGrid columns={2} spacing={4}>
-          <Box>
+        <Grid templateColumns="repeat(5, 1fr)" gap={4}>
+          <GridItem colSpan={4}>
             <Box as="h4" noOfLines={1} fontWeight="medium" fontSize="sm">
               NFT ADDRESS
             </Box>
@@ -140,8 +150,8 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
             >
               {!addressHovered ? <Box>{getEllipsisTxt(tokenAddress)}</Box> : <Box>{tokenAddress}</Box>}
             </Box>
-          </Box>
-          <Box textAlign={'right'} w={'20px'}>
+          </GridItem>
+          <GridItem colSpan={1}>
             <Box
               onClick={() =>
                 toast({
@@ -155,16 +165,15 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
                 })
               }
             >
-              <Button onClick={() => copyToClipboard(tokenAddress)}>
+              <Button width="20px" onClick={() => copyToClipboard(tokenAddress)}>
                 <CopyIcon></CopyIcon>
               </Button>
             </Box>
-          </Box>
-        </SimpleGrid>
+          </GridItem>
+        </Grid>
       </Box>
-      <SimpleGrid
-        columns={2}
-        spacing={4}
+      <Grid
+        templateColumns="repeat(5, 1fr)"
         bgColor={descBgColor}
         padding={2.5}
         borderRadius="xl"
@@ -172,20 +181,20 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
         border="2px"
         borderColor={hoverTrColor}
       >
-        <Box textAlign={'left'}>
+        <GridItem textAlign={'left'} colSpan={4}>
           <Box as="h4" noOfLines={1} fontWeight="medium" fontSize="sm">
             CONTRACT TYPE
           </Box>
           <Box as="h4" noOfLines={1} fontSize="sm">
             {contractType}
           </Box>
-        </Box>
-        <Box textAlign={'right'}>
+        </GridItem>
+        <GridItem colSpan={1}>
           <Box as="h4" noOfLines={1} fontWeight="medium" fontSize="sm" paddingLeft="90">
             <Eth fontSize="40px" />
           </Box>
-        </Box>
-      </SimpleGrid>
+        </GridItem>
+      </Grid>
       {!isENS ? (
         <Box
           id="pWrap"
