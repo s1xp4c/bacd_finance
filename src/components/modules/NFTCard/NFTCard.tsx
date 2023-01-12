@@ -24,8 +24,8 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
 
   const bgColor = useColorModeValue('none', 'blue.700');
   const borderColor = useColorModeValue('blue.200', 'blue.700');
-  const descBgColor = useColorModeValue('blue.100', 'blue.600');
-  const bgGradient = 'linear(to-r, blue.500, blue.700, blue.500)';
+  const descBgColor = useColorModeValue('blue.100', 'blue.650');
+  const bgGradient = 'linear(to-r, blue.900, blue.600, blue.900)';
   const hoverTrColor = useColorModeValue('gray.100', 'gray.700');
 
   const toast = useToast();
@@ -42,7 +42,7 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
       return setIsENS.on;
     }
     return setIsENS.off;
-  });
+  }, [symbol]);
 
   // eslint-disable-next-line no-undef
   const preventRightClick = (e: MouseEvent<HTMLImageElement, globalThis.MouseEvent>) => {
@@ -60,7 +60,7 @@ const NFTCard: FC<INFTCard> = ({ amount, contractType, name, symbol, metadata, t
 
   return (
     <Box
-      maxWidth="315px"
+      maxWidth="300px"
       bgColor={bgColor}
       bgGradient={bgGradient}
       padding={3}

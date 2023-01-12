@@ -20,7 +20,7 @@ const NavBar = () => {
                   aria-label="Options"
                   fontSize="20px"
                   transition={'all .3s ease-in'}
-                  _hover={{ color: 'green.400' }}
+                  _hover={{ color: 'blue.600' }}
                 />
               ) : (
                 <MenuButton
@@ -32,7 +32,7 @@ const NavBar = () => {
                   aria-label="Options"
                   fontSize="35px"
                   transition={'all .3s ease'}
-                  _hover={{ color: 'green.400' }}
+                  _hover={{ color: 'blue.600' }}
                 />
               )}
               <MenuList>

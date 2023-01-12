@@ -17,7 +17,7 @@ const NFTBalances: FC<INFTBalances> = ({ balances, envName }) => {
         {balances?.length ? (
           <Grid
             templateColumns="repeat(auto-fit, minmax(280px, 1fr))"
-            gap={0}
+            gap={'0'}
             textAlign="center"
             justifyContent={'space-between'}
           >
