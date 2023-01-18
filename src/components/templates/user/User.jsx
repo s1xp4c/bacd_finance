@@ -191,6 +191,7 @@ function User({ user }) {
               <Thead>
                 <Tr>
                   <Th>deFi wallet address:</Th>
+                  <Th></Th>
                 </Tr>
               </Thead>
               <Tbody>

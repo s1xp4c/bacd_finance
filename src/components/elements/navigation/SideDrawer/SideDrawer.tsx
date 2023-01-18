@@ -9,16 +9,14 @@ import {
   DrawerFooter,
   useDisclosure,
   IconButton,
-  HStack,
+  VStack,
   Menu,
   MenuButton,
-  MenuList,
-  MenuItem,
-  Box,
+  StackDivider,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
-import { NavItem } from '../NavItem';
-import NAV_LINKS from './paths';
+import { SnavItem } from '../SnavItem';
+import SNAV_LINKS from './paths';
 import React from 'react';
 
 const SideDrawer = () => {
@@ -49,17 +47,11 @@ const SideDrawer = () => {
             <DrawerHeader>DEFI OPTIONS</DrawerHeader>
 
             <DrawerBody>
-              <HStack>
-                <Box>
-                  <MenuList>
-                    <MenuItem display="block">
-                      {NAV_LINKS.map((link) => (
-                        <NavItem key={`link-${link.label}`} {...link} />
-                      ))}
-                    </MenuItem>
-                  </MenuList>
-                </Box>
-              </HStack>
+              <VStack gap={'0px'} display={'flex'} align={'stretch'} divider={<StackDivider borderColor="gray.100" />}>
+                {SNAV_LINKS.map((link) => (
+                  <SnavItem key={`-link-${link.label}`} {...link} />
+                ))}
+              </VStack>
             </DrawerBody>
             <DrawerFooter>
               <Button variant="outline" mr={3} onClick={onClose}>

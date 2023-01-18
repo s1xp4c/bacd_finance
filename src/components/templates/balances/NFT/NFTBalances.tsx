@@ -7,6 +7,7 @@ const NFTBalances: FC<INFTBalances> = ({ balances, envName }) => {
   const hoverTrColor = useColorModeValue('gray.100', 'gray.700');
 
   useEffect(() => console.log('Balances: ', balances), [balances]);
+  useEffect(() => console.log('EnvName: ', envName), [envName]);
 
   return (
     <>
