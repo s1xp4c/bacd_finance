@@ -11,10 +11,23 @@ function Swap(swapper: ISwapper) {
   return (
     <>
       <Heading size="lg" marginBottom={6}>
-        Swap this shit
+        Swap your tokens
       </Heading>
       <Box border="2px" borderColor={hoverTrColor} borderRadius="xl" padding="24px 18px" userSelect={'none'}>
-        <Box>{'Fuuuudge'}</Box>
+        <Box
+          borderWidth={'none'}
+          margin={'0 auto'}
+          display={'block'}
+          border-radius={'10px'}
+          max-width={'600px'}
+          min-width={'300px'}
+        >
+          <iframe
+            src="https://app.uniswap.org/#/swap?exactField=output&exactAmount=100000&outputCurrency=0x66eb10c9b80fc52401384285f5ecc18c0b924bbd"
+            height={'660px'}
+            width={'100%'}
+          />
+        </Box>
       </Box>
     </>
   );

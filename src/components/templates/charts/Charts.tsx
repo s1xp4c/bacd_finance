@@ -1,6 +1,7 @@
 import { Box, Heading, useColorModeValue } from '@chakra-ui/react';
 import { ICharts } from './types';
-
+import { Ticker } from './../../elements/Ticker';
+import { ChartCard } from './../../elements/ChartCard';
 import { useEffect } from 'react';
 
 function Charts(chartsAddress: ICharts) {
@@ -10,11 +11,45 @@ function Charts(chartsAddress: ICharts) {
 
   return (
     <>
+      <Ticker
+        symbols={[
+          {
+            proName: 'BITSTAMP:BTCUSD',
+            title: 'Bitcoin',
+          },
+          {
+            proName: 'BITSTAMP:ETHUSD',
+            title: 'Ethereum',
+          },
+          {
+            title: 'BACDv2',
+            proName: 'UNISWAP3ETH:BACD2USDC',
+          },
+          {
+            title: 'FREEdom Coin',
+            proName: 'GATEIO:FREEUSDT',
+          },
+          {
+            title: 'Solana',
+            proName: 'COINBASE:SOLUSD',
+          },
+        ]}
+        colorTheme={'dark'}
+      />
       <Heading size="lg" marginBottom={6}>
-        Swap this shit
+        Charts
       </Heading>
       <Box border="2px" borderColor={hoverTrColor} borderRadius="xl" padding="24px 18px" userSelect={'none'}>
-        <Box>{'Fuuuudge'}</Box>
+        <ChartCard
+          symbols={[
+            ['Bitcoin', 'BTC'],
+            ['Ethereum', 'ETH'],
+            ['BACDv2', 'UNISWAP3ETH:BACD2USDC|1D'],
+            ['Solana', 'SOL'],
+            ['FREEcoin', 'GATEIO:FREEUSDT|1D'],
+          ]}
+          colorTheme={'dark'}
+        />
       </Box>
     </>
   );

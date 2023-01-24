@@ -27,6 +27,18 @@ const SNAV_LINKS: ISideNav[] = [
         href: '/balances/erc20',
         logo: 'token',
       },
+      {
+        label: 'CHARTS',
+        subLabel: 'Get your Charts',
+        href: '/charts',
+        logo: 'wizard',
+      },
+      {
+        label: 'CHARTS2',
+        subLabel: 'Get your Charts',
+        href: '/charts',
+        logo: 'looking',
+      },
     ],
   },
 ];
