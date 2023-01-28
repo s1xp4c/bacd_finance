@@ -13,7 +13,8 @@ const Home = () => {
         Merging ceFi (Centralized Finance) and deFi (DeCentralized Finance) for the masses.
       </Heading>
       <Heading size="sm" marginBottom={1}>
-        Please connect your wallet to see your Blockchain Interactions and holdings
+        Please connect your wallet to see your Blockchain Interactions and holdings or check out real time charts in the
+        menu on the left.
       </Heading>
       <br></br>
       <Grid
@@ -61,6 +62,22 @@ const Home = () => {
               <ListIcon as={CheckCircleIcon} color="green.500" />
               Resolve ENS Domains
             </ListItem>
+            <ListItem>
+              <ListIcon as={CheckCircleIcon} color="green.500" />
+              Real Time Coin Charts
+            </ListItem>
+            <ListItem>
+              <ListIcon as={CheckCircleIcon} color="green.500" />
+              Real Time Coin Ticker
+            </ListItem>
+            <ListItem>
+              <ListIcon as={CheckCircleIcon} color="green.500" />
+              Decentralized Swap Function
+            </ListItem>
+            <ListItem>
+              <ListIcon as={CheckCircleIcon} color="green.500" />
+              OpenAI Generate Names
+            </ListItem>
           </List>
         </GridItem>
 
@@ -80,17 +97,10 @@ const Home = () => {
               <ListIcon as={SettingsIcon} color="yellow.500" />
               ICO/STO Presale stats
             </ListItem>
-            <ListItem>
-              <ListIcon as={SettingsIcon} color="yellow.500" />
-              Decentralized Swap function
-            </ListItem>
+
             <ListItem>
               <ListIcon as={SettingsIcon} color="yellow.500" />
               Voting integration
-            </ListItem>
-            <ListItem>
-              <ListIcon as={SettingsIcon} color="yellow.500" />
-              Real Time Coin charts
             </ListItem>
           </List>
         </GridItem>

@@ -1,6 +1,6 @@
 {
   "name": "bacd-finance",
-  "version": "2.0.0",
+  "version": "2.0.3",
   "private": true,
   "homepage": "https://bacdfinance.netlify.app/",
   "scripts": {
@@ -34,7 +34,8 @@
     "react-ts-tradingview-widgets": "^1.0.14",
     "styled-components": "^5.3.6",
     "typescript": "4.7.4",
-    "wagmi": "^0.6.4"
+    "wagmi": "^0.6.4",
+    "openai": "^3.1.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.33.1",

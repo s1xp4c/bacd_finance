@@ -31,15 +31,14 @@ const SNAV_LINKS: ISideNav[] = [
         label: 'CHARTS',
         subLabel: 'Get your Charts',
         href: '/charts',
-        logo: 'wizard',
-      },
-      {
-        label: 'CHARTS2',
-        subLabel: 'Get your Charts',
-        href: '/charts',
-        logo: 'looking',
+        logo: 'chest',
       },
     ],
+  },
+  {
+    label: 'OPENAI',
+    href: '/openai',
+    logo: 'wizard',
   },
 ];
 

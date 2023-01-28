@@ -1,18 +1,16 @@
 import { Default } from 'components/layouts/Default';
 import { GetServerSideProps, NextPage } from 'next';
+import { OpenAI } from 'components/templates/openAI';
 import { getSession } from 'next-auth/react';
-import { Voting } from 'components/templates/voting';
-
 import Moralis from 'moralis';
 
-const votingPage: NextPage = (props) => {
+const openAIPage: NextPage = (props) => {
   return (
-    <Default pageName="Voting">
-      <Voting voting={[]} {...props} />
+    <Default pageName="OpenAI">
+      <OpenAI useraddress={[]} {...props} />
     </Default>
   );
 };
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
 
@@ -28,13 +26,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     address: session?.user.address,
   };
 
-  const votingAddress = { address: userB?.address };
+  const userAddress = { address: userB?.address };
 
   return {
     props: {
-      voting: JSON.parse(JSON.stringify(votingAddress)),
+      useraddress: JSON.parse(JSON.stringify(userAddress)),
     },
   };
 };
-
-export default votingPage;
+export default openAIPage;
