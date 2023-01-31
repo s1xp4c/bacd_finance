@@ -54,10 +54,10 @@ function generatePrompt(coin) {
 
 Coin: BTC
 Names: 
-ETH is a layer one coin with vast network adoption, SOL is looking good in terms of development and followers, ADA has massive amount of tokens staked and is still early in terms of deployment
+ETH is a layer one coin with vast network adoption, SOL is looking good in terms of development , ADA has massive amount of tokens staked
 Coin: DOGE 
 Names: 
-FREE is a meme coin but has huge adoption by wallets and community, SHIB is a meme coin but now aims for the moon by burning tokens with each transaction, ELON is a meme coin riding the name of Elon Musk
+FREE is a meme coin but has huge adoption by wallets, SHIB is a meme coin but now aims for the moon, ELON is a meme upon the name of Elon Musk
 Coin: ${capitalizedCoin}
 Names:`;
 }
