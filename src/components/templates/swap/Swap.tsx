@@ -52,12 +52,6 @@ function Swap(swapper: ISwapper) {
               convenienceFee={5}
               convenienceFeeRecipient={cFeeAddress}
             />
-            {/* <iframe title="Poocoin Widget" loading="lazy" src="https://poocoin.app/embed-swap?outputCurrency=0xc96Ebbc3b3158aAb69312e89fe04C9Cd192BeE01" width="360px" background-color={'#1a202c'} ></iframe>  */}
-            {/* <iframe
-            src="https://app.uniswap.org/#/swap?exactField=output&exactAmount=100000&outputCurrency=0x66eb10c9b80fc52401384285f5ecc18c0b924bbd"
-            height={'660px'}
-            width={'100%'}
-          /> */}
           </Box>
         </Flex>
       </Box>

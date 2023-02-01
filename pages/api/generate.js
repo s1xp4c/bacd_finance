@@ -30,6 +30,7 @@ export default async function (req, res) {
       model: 'text-davinci-003',
       prompt: generatePrompt(coin),
       temperature: 0.9,
+      max_tokens: 1000,
     });
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch (error) {
@@ -50,14 +51,18 @@ export default async function (req, res) {
 
 function generatePrompt(coin) {
   const capitalizedCoin = coin[0].toUpperCase() + coin.slice(1).toLowerCase();
-  return `Suggest 2 similar crypto coins and explain why
+  return `Suggest and list of 5 similar crypto coins with in depth explaination
 
-Coin: BTC
-Names: 
-ETH is a layer one coin with vast network adoption, SOL is looking good in terms of development , ADA has massive amount of tokens staked
-Coin: DOGE 
-Names: 
-FREE is a meme coin but has huge adoption by wallets, SHIB is a meme coin but now aims for the moon, ELON is a meme upon the name of Elon Musk
+1. ETH is a layer one coin with vast network adoption
+
+2. SOL is looking good in terms of development 
+
+3. ADA has a massive amount of tokens staked
+
+4. FREE is a meme coin but has huge adoption by wallets
+
+5. SHIB is a meme coin but now aims for the moon
+
 Coin: ${capitalizedCoin}
 Names:`;
 }

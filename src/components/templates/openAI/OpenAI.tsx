@@ -1,4 +1,4 @@
-import { Heading, VStack, useColorModeValue, Icon, Box, Input, Button, Flex } from '@chakra-ui/react';
+import { Heading, VStack, useColorModeValue, Box, Input, Button, Flex } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { IUser } from './types';
 import { Eth } from '@web3uikit/icons';
@@ -37,10 +37,7 @@ function OpenAI(useraddress: IUser) {
   return (
     <VStack w={'full'}>
       <Heading size="md" marginBottom={6}>
-        Try out BACD AI
-        <Icon>
-          <img src="/dog.png" />
-        </Icon>
+        Try out BACD OPENAI
       </Heading>
       <Flex
         border="2px"
@@ -53,14 +50,16 @@ function OpenAI(useraddress: IUser) {
         flexDir="column"
       >
         <Heading size="sm" marginBottom={6}>
-          Enter a Crypto Coin you like and our AI will suggest a similar coin and explain why.
+          {
+            'Enter a Crypto Coin and our AI will explain your coin and display 4 similar coins with in depth descriptions.'
+          }
         </Heading>
         <Heading size="xs" marginBottom={2}>
           {'NB! - Investing in crypto is highly speculative, and no data from the AI should be construed  '}
         </Heading>
         <Heading size="xs" marginBottom={6}>
           {' '}
-          {'as investment advice and the AI answers are limited to data from before 2021.'}
+          {'as investment advice. The AI answers are limited to data from before 2021.'}
         </Heading>
         <Box marginBottom={6}>
           <Eth fontSize={'200px'} />
@@ -72,12 +71,12 @@ function OpenAI(useraddress: IUser) {
               marginBottom={6}
               type="text"
               name="coin"
-              placeholder="Enter a Crypto Coin"
+              placeholder="Enter a Crypto Coin or Token . . . "
               value={coinInput}
               onChange={(e) => setCoinInput(e.target.value)}
             />
             <Button marginBottom={6} type="submit" value="Generate coins">
-              {'Generate Crypto Coins'}
+              {'GENERATE COIN EXPLANATIONS'}
             </Button>
           </form>
           <>
