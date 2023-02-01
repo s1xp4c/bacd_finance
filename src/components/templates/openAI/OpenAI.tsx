@@ -6,7 +6,7 @@ import { Eth, Btc, Link, Ada, Bnb } from '@web3uikit/icons';
 function OpenAI(useraddress: IUser) {
   const hoverLiColor = useColorModeValue('gray.100', 'gray.700');
 
-  useEffect(() => console.log('voting: ', useraddress), [useraddress]);
+  useEffect(() => console.log('User Address: ', useraddress), [useraddress]);
 
   const [coinInput, setCoinInput] = useState('');
   const [result, setResult] = useState();
@@ -79,7 +79,7 @@ function OpenAI(useraddress: IUser) {
           </Grid>
         </Box>
 
-        <Box id="pWrap">
+        <Box>
           <form onSubmit={onSubmit}>
             <Input
               marginBottom={6}
@@ -93,14 +93,8 @@ function OpenAI(useraddress: IUser) {
               {'GENERATE COIN EXPLANATIONS'}
             </Button>
           </form>
-          <>
-            <style>
-              {`#pWrap {
-                            white-space: pre-line;
-                          }`}
-            </style>
-            <Box>{result}</Box>
-          </>
+
+          <Box>{result}</Box>
         </Box>
       </Flex>
     </VStack>

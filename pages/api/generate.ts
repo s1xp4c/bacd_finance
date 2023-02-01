@@ -30,8 +30,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const completion = await openai.createCompletion({
       model: 'text-davinci-003',
       prompt: generatePrompt(coin),
-      temperature: 0.7,
-      max_tokens: 1500,
+      temperature: 0.6,
+      max_tokens: 1000,
     });
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch (error) {
@@ -44,7 +44,6 @@ function generatePrompt(coin: string | string[]) {
   const capitalizedCoin = coin[0].toUpperCase() + coin.slice(1);
   const capCoinToLower = capitalizedCoin.toLowerCase();
   return `List 5 similar crypto coins by on chain metrics from top 300 by marketcap with in depth explainations on why.
-
-Coin: ${capCoinToLower}
-Names:`;
+  Coin: ${capCoinToLower}
+  Names:`;
 }
