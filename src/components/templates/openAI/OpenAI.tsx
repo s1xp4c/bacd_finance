@@ -1,7 +1,7 @@
-import { Heading, VStack, useColorModeValue, Box, Input, Button, Flex } from '@chakra-ui/react';
+import { Heading, VStack, useColorModeValue, Box, Input, Button, Flex, Grid, GridItem } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { IUser } from './types';
-import { Eth } from '@web3uikit/icons';
+import { Eth, Btc, Link, Ada, Bnb } from '@web3uikit/icons';
 
 function OpenAI(useraddress: IUser) {
   const hoverLiColor = useColorModeValue('gray.100', 'gray.700');
@@ -50,9 +50,7 @@ function OpenAI(useraddress: IUser) {
         flexDir="column"
       >
         <Heading size="sm" marginBottom={6}>
-          {
-            'Enter a Crypto Coin and our AI will explain your coin and display 4 similar coins with in depth descriptions.'
-          }
+          {'Enter a Crypto Coin or Token and our AI will find and list 5 similar cryptos with explainations.'}
         </Heading>
         <Heading size="xs" marginBottom={2}>
           {'NB! - Investing in crypto is highly speculative, and no data from the AI should be construed  '}
@@ -62,7 +60,23 @@ function OpenAI(useraddress: IUser) {
           {'as investment advice. The AI answers are limited to data from before 2021.'}
         </Heading>
         <Box marginBottom={6}>
-          <Eth fontSize={'200px'} />
+          <Grid templateColumns="repeat(5, 1fr)" gap={6}>
+            <GridItem w="100%" h="100px">
+              <Btc fontSize={'80px'} />
+            </GridItem>
+            <GridItem w="100%" h="100px">
+              <Eth fontSize={'80px'} />
+            </GridItem>
+            <GridItem w="100%" h="100px">
+              <Link fontSize={'80px'} />
+            </GridItem>
+            <GridItem w="100%" h="100px">
+              <Ada fontSize={'80px'} />
+            </GridItem>
+            <GridItem w="100%" h="100px">
+              <Bnb fontSize={'80px'} />
+            </GridItem>
+          </Grid>
         </Box>
 
         <Box id="pWrap">

@@ -51,11 +51,11 @@ export default async function (req, res) {
 
 function generatePrompt(coin) {
   const capitalizedCoin = coin[0].toUpperCase() + coin.slice(1).toLowerCase();
-  return `Suggest and list of 5 similar crypto coins with in depth explaination
+  return `Suggest and list 5 similar crypto coins or tokens from top 300 by marketcap with in depth explainations on why they are similar.
 
-1. ETH is a layer one coin with vast network adoption
+1. ETH is a layer one coin with vast network adoption and ...
 
-2. SOL is looking good in terms of development 
+2. SOL is looking good in terms of development and ...
 
 3. ADA has a massive amount of tokens staked
 
