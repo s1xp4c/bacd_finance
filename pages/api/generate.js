@@ -51,17 +51,7 @@ export default async function (req, res) {
 
 function generatePrompt(coin) {
   const capitalizedCoin = coin[0].toUpperCase() + coin.slice(1).toLowerCase();
-  return `Suggest and list 5 similar crypto coins or tokens from top 300 by marketcap with in depth explainations on why they are similar.
-
-1. ETH is a layer one coin with vast network adoption and ...
-
-2. SOL is looking good in terms of development and ...
-
-3. ADA has a massive amount of tokens staked
-
-4. FREE is a meme coin but has huge adoption by wallets
-
-5. SHIB is a meme coin but now aims for the moon
+  return `List 5 similar crypto coins by on chain metrics from top 300 by marketcap with in depth explainations on why.
 
 Coin: ${capitalizedCoin}
 Names:`;
