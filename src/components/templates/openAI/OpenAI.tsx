@@ -79,7 +79,7 @@ function OpenAI(useraddress: IUser) {
           </Grid>
         </Box>
 
-        <Box>
+        <Box id="pWrap">
           <form onSubmit={onSubmit}>
             <Input
               marginBottom={6}
@@ -93,8 +93,14 @@ function OpenAI(useraddress: IUser) {
               {'GENERATE COIN EXPLANATIONS'}
             </Button>
           </form>
-
-          <Box>{result}</Box>
+          <>
+            <style>
+              {`#pWrap {
+                            white-space: pre-line;
+                          }`}
+            </style>
+            <Box>{result}</Box>
+          </>
         </Box>
       </Flex>
     </VStack>
