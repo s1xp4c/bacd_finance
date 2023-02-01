@@ -2,7 +2,6 @@ import { Default } from 'components/layouts/Default';
 import { GetServerSideProps, NextPage } from 'next';
 import { getSession } from 'next-auth/react';
 import { Swap } from 'components/templates/swap';
-
 import Moralis from 'moralis';
 
 const swapPage: NextPage = (props) => {

@@ -1,6 +1,6 @@
 {
   "name": "bacd-finance",
-  "version": "2.0.3",
+  "version": "2.0.41",
   "private": true,
   "homepage": "https://bacdfinance.netlify.app/",
   "scripts": {
@@ -19,23 +19,26 @@
     "@types/node": "18.7.6",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
+    "@uniswap/widgets": "^2.22.2",
     "@web3uikit/core": "^0.1.5",
     "@web3uikit/icons": "^0.1.5",
     "axios": "^0.27.2",
     "copy-to-clipboard-ultralight": "^1.0.15",
     "ethers": "^5.6.9",
     "framer-motion": "^6",
+    "immer": "^9.0.19",
+    "jotai-immer": "^0.2.0",
     "mongoose": "^6.7.3",
     "moralis": "^2.9.0",
     "next": "12.2.5",
     "next-auth": "^4.10.3",
+    "openai": "^3.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-ts-tradingview-widgets": "^1.0.14",
     "styled-components": "^5.3.6",
     "typescript": "4.7.4",
-    "wagmi": "^0.6.4",
-    "openai": "^3.1.0"
+    "wagmi": "^0.6.4"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.33.1",
