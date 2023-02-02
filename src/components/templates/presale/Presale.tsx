@@ -1,12 +1,11 @@
 import { Box, Heading, useColorModeValue } from '@chakra-ui/react';
 import { IPresale } from './types';
-
 import { useEffect } from 'react';
 
 function Presale(presale: IPresale) {
-  const hoverTrColor = useColorModeValue('gray.100', 'gray.700');
-
   useEffect(() => console.log('presale: ', presale), [presale]);
+
+  const hoverTrColor = useColorModeValue('gray.100', 'gray.700');
 
   return (
     <>

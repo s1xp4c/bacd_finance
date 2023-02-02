@@ -2,6 +2,7 @@ import { Heading, VStack, useColorModeValue, Box, Input, Button, Flex, Grid, Gri
 import { useEffect, useState } from 'react';
 import { IUser } from './types';
 import { Eth, Btc, Link, Ada, Bnb } from '@web3uikit/icons';
+import { LoadingSpinner } from 'components/elements';
 
 function OpenAI(useraddress: IUser) {
   const hoverLiColor = useColorModeValue('gray.100', 'gray.700');
@@ -10,8 +11,16 @@ function OpenAI(useraddress: IUser) {
 
   const [coinInput, setCoinInput] = useState('');
   const [result, setResult] = useState();
+  const [isFetching, setIsFetching] = useState(false);
+
+  useEffect(() => {
+    if (result) {
+      setIsFetching(false);
+    }
+  }, [result]);
 
   async function onSubmit(event: { preventDefault: () => void }) {
+    setIsFetching(true);
     event.preventDefault();
     try {
       const response = await fetch('/api/generate', {
@@ -99,7 +108,14 @@ function OpenAI(useraddress: IUser) {
                             white-space: pre-line;
                           }`}
             </style>
-            <Box>{result}</Box>
+            {isFetching === true ? (
+              <Box>
+                {' '}
+                <LoadingSpinner />
+              </Box>
+            ) : (
+              <Box> {result}</Box>
+            )}
           </>
         </Box>
       </Flex>

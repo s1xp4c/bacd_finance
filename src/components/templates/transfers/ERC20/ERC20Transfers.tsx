@@ -11,6 +11,7 @@ import {
   Box,
   useColorModeValue,
 } from '@chakra-ui/react';
+
 import { FC, useEffect } from 'react';
 import { getEllipsisTxt } from 'utils/format';
 import { IERC20Transfers } from './types';

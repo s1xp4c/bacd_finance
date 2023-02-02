@@ -18,8 +18,16 @@ import {
 import { FC, useEffect } from 'react';
 import { getEllipsisTxt } from 'utils/format';
 import { IERC20Balances } from './types';
+import { useSession } from 'next-auth/react';
+import { LoadingSpinner } from 'components/elements';
 
 const ERC20Balances: FC<IERC20Balances> = ({ balances }) => {
+  const { status } = useSession();
+
+  if (status === 'loading') {
+    return <LoadingSpinner />;
+  }
+
   const hoverTrColor = useColorModeValue('gray.100', 'gray.700');
   const valueFirst = '1e';
   useEffect(() => console.log('balances: ', balances), [balances]);

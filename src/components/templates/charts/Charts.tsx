@@ -1,7 +1,7 @@
 import { Box, Heading, useColorModeValue } from '@chakra-ui/react';
 import { ICharts } from './types';
-import { Ticker } from './../../elements/Ticker';
-import { ChartCard } from './../../elements/ChartCard';
+import { Ticker } from '../../modules/Ticker';
+import { ChartCard } from '../../modules/ChartCard';
 import { useEffect } from 'react';
 
 function Charts(chartsAddress: ICharts) {
