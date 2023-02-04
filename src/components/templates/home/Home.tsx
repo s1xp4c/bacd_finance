@@ -1,20 +1,20 @@
 import { CheckCircleIcon, SettingsIcon } from '@chakra-ui/icons';
-import { Heading, VStack, List, ListIcon, ListItem, Grid, GridItem, useColorModeValue } from '@chakra-ui/react';
+import { Heading, List, ListIcon, ListItem, Grid, GridItem, useColorModeValue } from '@chakra-ui/react';
 
 const Home = () => {
   const hoverLiColor = useColorModeValue('gray.100', 'gray.700');
 
   return (
-    <VStack w={'full'}>
-      <Heading size="md" marginBottom={6}>
+    <>
+      <Heading size="md" marginBottom={6} textAlign={'center'}>
         Welcome to BACD FINANCE
       </Heading>
-      <Heading size="sm" marginBottom={1}>
+      <Heading size="sm" marginBottom={3} textAlign={'center'}>
         Merging ceFi (Centralized Finance) and deFi (DeCentralized Finance) for the masses.
       </Heading>
-      <Heading size="sm" marginBottom={1}>
-        Please connect your wallet to see your Blockchain Interactions and holdings or check out real time charts in the
-        menu on the left.
+      <Heading size="sm" marginBottom={1} textAlign={'center'}>
+        Please connect your wallet to see your Blockchain Interactions and holdings in the top right menu or check out
+        real time charts, our OpenAI, Swap your coins, cast your votes and see Presales in the menu on the left.
       </Heading>
       <br></br>
       <Grid
@@ -76,7 +76,11 @@ const Home = () => {
             </ListItem>
             <ListItem>
               <ListIcon as={CheckCircleIcon} color="green.500" />
-              OpenAI Generate Names
+              OpenAI Generate Coins
+            </ListItem>
+            <ListItem>
+              <ListIcon as={CheckCircleIcon} color="green.500" />
+              Voting integration
             </ListItem>
           </List>
         </GridItem>
@@ -97,15 +101,10 @@ const Home = () => {
               <ListIcon as={SettingsIcon} color="yellow.500" />
               ICO/STO Presale stats
             </ListItem>
-
-            <ListItem>
-              <ListIcon as={SettingsIcon} color="yellow.500" />
-              Voting integration
-            </ListItem>
           </List>
         </GridItem>
       </Grid>
-    </VStack>
+    </>
   );
 };
 

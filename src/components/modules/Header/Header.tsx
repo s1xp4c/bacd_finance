@@ -7,13 +7,15 @@ const Header = () => {
     <Box borderBottom="1px" borderBottomColor="chakra-border-color">
       <Container maxW="container.lg" p={'10px'}>
         <Flex align="center" justify="space-between">
-          <SideDrawer />
-          <BacdLogo />
           <HStack gap={'20px'}>
-            <ConnectButton />
-            <ColorModeButton />
+            <SideDrawer />
+            <BacdLogo />
           </HStack>
-          <NavBar />
+          <ConnectButton />
+          <HStack gap={'20px'}>
+            <ColorModeButton />
+            <NavBar />
+          </HStack>
         </Flex>
       </Container>
     </Box>

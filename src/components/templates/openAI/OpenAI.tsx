@@ -1,8 +1,19 @@
-import { Heading, VStack, useColorModeValue, Box, Input, Button, Flex, Grid, GridItem } from '@chakra-ui/react';
+import {
+  Heading,
+  useColorModeValue,
+  Box,
+  Input,
+  Button,
+  Flex,
+  Grid,
+  GridItem,
+  Skeleton,
+  Stack,
+} from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { IUser } from './types';
 import { Eth, Btc, Link, Ada, Bnb } from '@web3uikit/icons';
-import { LoadingSpinner } from 'components/elements';
+import { LoadingSpinner } from 'components/modules';
 
 function OpenAI(useraddress: IUser) {
   const hoverLiColor = useColorModeValue('gray.100', 'gray.700');
@@ -44,7 +55,7 @@ function OpenAI(useraddress: IUser) {
   }
 
   return (
-    <VStack w={'full'}>
+    <>
       <Heading size="md" marginBottom={6}>
         Try out BACD OPENAI
       </Heading>
@@ -88,7 +99,7 @@ function OpenAI(useraddress: IUser) {
           </Grid>
         </Box>
 
-        <Box id="pWrap">
+        <Box id="pWrap" w={'full'}>
           <form onSubmit={onSubmit}>
             <Input
               marginBottom={6}
@@ -109,17 +120,31 @@ function OpenAI(useraddress: IUser) {
                           }`}
             </style>
             {isFetching === true ? (
-              <Box>
-                {' '}
-                <LoadingSpinner />
-              </Box>
+              <>
+                <Box>
+                  <LoadingSpinner />
+                </Box>
+                <Box w={'100%'}>
+                  <Stack padding={4} spacing={1}>
+                    <Skeleton height="40px">
+                      <Box>Hello World!</Box>
+                    </Skeleton>
+                    <Skeleton height="40px" bg="green.500" color="white" fadeDuration={1}>
+                      <Box>Hello React!</Box>
+                    </Skeleton>
+                    <Skeleton height="40px" fadeDuration={4} bg="blue.500" color="white">
+                      <Box>Hello ChakraUI!</Box>
+                    </Skeleton>
+                  </Stack>
+                </Box>
+              </>
             ) : (
               <Box> {result}</Box>
             )}
           </>
         </Box>
       </Flex>
-    </VStack>
+    </>
   );
 }
 
