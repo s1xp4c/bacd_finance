@@ -35,7 +35,15 @@ function OpenAI(useraddress: IUser) {
     setIsFetching(true);
     event.preventDefault();
     try {
-      const response = await axios.post('api/generate', { coin: coinInput });
+      const response = await axios.post(
+        'api/generate',
+        { coin: coinInput },
+        {
+          headers: {
+            Accept: 'application/json',
+          },
+        },
+      );
       const { data } = response;
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
