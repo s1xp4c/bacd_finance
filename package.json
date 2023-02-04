@@ -1,8 +1,12 @@
 {
   "name": "bacd-finance",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "private": true,
-  "homepage": "https://bacdfinance.netlify.app/",
+  "homepage": "https://github.com/s1xp4c/bacd_finance",
+  "email": "six@bacd.io",
+  "engines": {
+    "node": "^7.10.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -58,7 +58,7 @@ function OpenAI(useraddress: IUser) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
 
-      setResult(JSON.stringify(data.result));
+      setResult(data.result);
       setCoinInput('');
     } catch (error) {
       console.error(error);
