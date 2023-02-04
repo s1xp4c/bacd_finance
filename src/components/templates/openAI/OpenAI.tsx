@@ -22,7 +22,7 @@ function OpenAI(useraddress: IUser) {
   useEffect(() => console.log('User Address: ', useraddress), [useraddress]);
 
   const [coinInput, setCoinInput] = useState('');
-  const [result, setResult] = useState();
+  const [result, setResult] = useState<string>('');
   const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
