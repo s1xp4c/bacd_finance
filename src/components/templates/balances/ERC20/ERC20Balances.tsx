@@ -19,7 +19,7 @@ import { FC, useEffect } from 'react';
 import { getEllipsisTxt } from 'utils/format';
 import { IERC20Balances } from './types';
 import { useSession } from 'next-auth/react';
-import { LoadingSpinner } from 'components/elements';
+import { LoadingSpinner } from 'components/modules';
 
 const ERC20Balances: FC<IERC20Balances> = ({ balances }) => {
   const { status } = useSession();
