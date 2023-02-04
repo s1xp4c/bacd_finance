@@ -1,6 +1,6 @@
 import { Box, useColorMode, Link } from '@chakra-ui/react';
 import NextLink from 'next/link';
-import NextImage from 'next/image';
+import Image from 'next/image';
 
 const BacdLogo = () => {
   const { colorMode } = useColorMode();
@@ -15,10 +15,10 @@ const BacdLogo = () => {
       >
         <NextLink href="/" passHref>
           <Link>
-            <NextImage
+            <Image
               src={colorMode === 'dark' ? '/bacd_logo_text_white.svg' : '/bacd_logo_text.svg'}
-              width={100}
               height={35}
+              width={100}
               alt="BACD LOGO"
             />
           </Link>

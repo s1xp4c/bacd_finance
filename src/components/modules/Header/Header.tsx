@@ -11,8 +11,8 @@ const Header = () => {
             <SideDrawer />
             <BacdLogo />
           </HStack>
+          <ConnectButton />
           <HStack gap={'20px'}>
-            <ConnectButton />
             <ColorModeButton />
             <NavBar />
           </HStack>
