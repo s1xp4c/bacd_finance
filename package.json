@@ -4,9 +4,6 @@
   "private": true,
   "homepage": "https://github.com/s1xp4c/bacd_finance",
   "email": "six@bacd.io",
-  "engines": {
-    "node": ">=14.6.0"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
