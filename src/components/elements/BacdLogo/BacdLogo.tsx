@@ -9,6 +9,7 @@ const BacdLogo = () => {
     <>
       <Box
         transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
+        paddingTop={2}
         _hover={{
           transform: 'scale(0.98)',
         }}
