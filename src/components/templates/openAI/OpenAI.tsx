@@ -34,7 +34,7 @@ function OpenAI(useraddress: IUser) {
     setIsFetching(true);
     event.preventDefault();
     try {
-      const response = await fetch('./api/generate', {
+      const response = await fetch('api/generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
