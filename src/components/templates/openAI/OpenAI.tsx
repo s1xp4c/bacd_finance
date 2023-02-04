@@ -45,12 +45,20 @@ function OpenAI(useraddress: IUser) {
           timeout: 60000,
         },
       );
+      if (
+        response.headers['content-type'] !== 'application/json' &&
+        response.headers['content-type'] !== 'application/json; charset=utf-8'
+      ) {
+        console.error(`Unexpected content-type: ${response.headers['content-type']}`);
+        throw new Error('Unexpected content-type');
+      }
+
       const { data } = response;
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
 
-      setResult(data.result);
+      setResult(JSON.stringify(data.result));
       setCoinInput('');
     } catch (error) {
       console.error(error);
@@ -73,10 +81,12 @@ function OpenAI(useraddress: IUser) {
         flexDir="column"
       >
         <Heading size="sm" marginBottom={6}>
-          {'Enter a Crypto Coin or Token and our AI will find and list 5 similar cryptos with explainations.'}
+          {
+            'Enter a Crypto Coin or Token and our AI will find and list 5 similar cryptos with explainations from top 300 by marketcap.'
+          }
         </Heading>
         <Heading size="xs" marginBottom={2}>
-          {'NB! - Investing in crypto is highly speculative, and no data from the AI should be construed  '}
+          {'NB! - Investing in crypto is highly speculative, and no data from the AI should be perceived '}
         </Heading>
         <Heading size="xs" marginBottom={6}>
           {' '}
