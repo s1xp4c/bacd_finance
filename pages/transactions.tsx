@@ -5,7 +5,7 @@ import { ITransactions, Transactions } from 'components/templates/transactions';
 import Moralis from 'moralis';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { LoadingSpinner } from 'components/elements';
+import { LoadingSpinner } from 'components/modules';
 
 const TransactionsPage: NextPage<ITransactions> = (props) => {
   const router = useRouter();

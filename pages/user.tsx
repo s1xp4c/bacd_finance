@@ -7,7 +7,7 @@ import connectDB from './api/auth/connectDB';
 import Moralis from 'moralis';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { LoadingSpinner } from 'components/elements';
+import { LoadingSpinner } from 'components/modules';
 
 const userPage: NextPage<IUserData> = (props) => {
   const router = useRouter();

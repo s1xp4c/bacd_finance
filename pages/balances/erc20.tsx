@@ -7,7 +7,7 @@ import Moralis from 'moralis';
 import { ERC20Balances, IERC20Balances } from 'components/templates/balances/ERC20';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { LoadingSpinner } from 'components/elements';
+import { LoadingSpinner } from 'components/modules';
 
 const ERC20: NextPage<IERC20Balances> = (props) => {
   const router = useRouter();

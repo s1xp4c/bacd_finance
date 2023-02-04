@@ -5,7 +5,7 @@ import { Swap } from 'components/templates/swap';
 import Moralis from 'moralis';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { LoadingSpinner } from 'components/elements';
+import { LoadingSpinner } from 'components/modules';
 
 const swapPage: NextPage = (props) => {
   const router = useRouter();

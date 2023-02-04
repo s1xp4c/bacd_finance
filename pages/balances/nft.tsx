@@ -6,7 +6,7 @@ import { NFTBalances } from 'components/templates/balances/NFT';
 import Moralis from 'moralis';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { LoadingSpinner } from 'components/elements';
+import { LoadingSpinner } from 'components/modules';
 
 const ERC20: NextPage<INFTBalances> = (props) => {
   const router = useRouter();

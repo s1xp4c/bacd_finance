@@ -3,7 +3,7 @@ import { Home } from 'components/templates/home';
 import type { NextPage } from 'next';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { LoadingSpinner } from 'components/elements';
+import { LoadingSpinner } from 'components/modules';
 
 const HomePage: NextPage = () => {
   const router = useRouter();

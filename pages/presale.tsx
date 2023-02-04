@@ -5,7 +5,7 @@ import { Presale } from 'components/templates/presale';
 import Moralis from 'moralis';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { LoadingSpinner } from 'components/elements';
+import { LoadingSpinner } from 'components/modules';
 
 const presalePage: NextPage = (props) => {
   const router = useRouter();

@@ -3,7 +3,7 @@ import { GetServerSideProps, NextPage } from 'next';
 import { OpenAI } from 'components/templates/openAI';
 import { getSession } from 'next-auth/react';
 import Moralis from 'moralis';
-import { LoadingSpinner } from 'components/elements';
+import { LoadingSpinner } from 'components/modules';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
