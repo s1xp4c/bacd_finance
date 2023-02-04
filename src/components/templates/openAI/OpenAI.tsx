@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react';
 import { IUser } from './types';
 import { Eth, Btc, Link, Ada, Bnb } from '@web3uikit/icons';
 import { LoadingSpinner } from 'components/modules';
+import axios from 'axios';
 
 function OpenAI(useraddress: IUser) {
   const hoverLiColor = useColorModeValue('gray.100', 'gray.700');
@@ -34,15 +35,8 @@ function OpenAI(useraddress: IUser) {
     setIsFetching(true);
     event.preventDefault();
     try {
-      const response = await fetch('api/generate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ coin: coinInput }),
-      });
-
-      const data = await response.json();
+      const response = await axios.post('api/generate', { coin: coinInput });
+      const { data } = response;
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
