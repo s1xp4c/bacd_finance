@@ -1,9 +1,7 @@
-import { CheckCircleIcon, SettingsIcon } from '@chakra-ui/icons';
-import { Heading, List, ListIcon, ListItem, Grid, GridItem, useColorModeValue } from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
+import { Eye } from 'components/elements/Eye';
 
 const Home = () => {
-  const hoverLiColor = useColorModeValue('gray.100', 'gray.700');
-
   return (
     <>
       <Heading size="md" marginBottom={6} textAlign={'center'}>
@@ -12,98 +10,14 @@ const Home = () => {
       <Heading size="sm" marginBottom={3} textAlign={'center'}>
         Merging ceFi (Centralized Finance) and deFi (DeCentralized Finance) for the masses.
       </Heading>
-      <Heading size="sm" marginBottom={1} textAlign={'center'}>
+      <Heading size="sm" marginBottom={8} textAlign={'center'}>
         Please connect your wallet to see your Blockchain Interactions and holdings in the top right menu or check out
         real time charts, our OpenAI, Swap your coins, cast your votes and see Presales in the menu on the left.
       </Heading>
-      <br></br>
-      <Grid
-        templateColumns="repeat(5, 1fr)"
-        gap={4}
-        border="2px"
-        borderColor={hoverLiColor}
-        borderRadius="xl"
-        padding="24px 18px"
-      >
-        <GridItem colSpan={2}>
-          <List spacing={4}>
-            <ListItem borderBottom="2px" borderBottomColor={hoverLiColor}>
-              <Heading size="md" marginBottom={1}>
-                <ListIcon as={CheckCircleIcon} color="green.500" />
-                Done
-              </Heading>
-            </ListItem>
 
-            <ListItem>
-              <ListIcon as={CheckCircleIcon} color="green.500" />
-              Blockchain authentication
-            </ListItem>
-            <ListItem>
-              <ListIcon as={CheckCircleIcon} color="green.500" />
-              Multichain Support
-            </ListItem>
-            <ListItem>
-              <ListIcon as={CheckCircleIcon} color="green.500" />
-              Centralized user profile
-            </ListItem>
-            <ListItem>
-              <ListIcon as={CheckCircleIcon} color="green.500" />
-              Decentralized wallet info
-            </ListItem>
-            <ListItem>
-              <ListIcon as={CheckCircleIcon} color="green.500" />
-              Wallet Copy Functions
-            </ListItem>
-            <ListItem>
-              <ListIcon as={CheckCircleIcon} color="green.500" />
-              NFT Copy Protection
-            </ListItem>
-            <ListItem>
-              <ListIcon as={CheckCircleIcon} color="green.500" />
-              Resolve ENS Domains
-            </ListItem>
-            <ListItem>
-              <ListIcon as={CheckCircleIcon} color="green.500" />
-              Real Time Coin Charts
-            </ListItem>
-            <ListItem>
-              <ListIcon as={CheckCircleIcon} color="green.500" />
-              Real Time Coin Ticker
-            </ListItem>
-            <ListItem>
-              <ListIcon as={CheckCircleIcon} color="green.500" />
-              Decentralized Swap Function
-            </ListItem>
-            <ListItem>
-              <ListIcon as={CheckCircleIcon} color="green.500" />
-              OpenAI Generate Coins
-            </ListItem>
-            <ListItem>
-              <ListIcon as={CheckCircleIcon} color="green.500" />
-              Voting integration
-            </ListItem>
-          </List>
-        </GridItem>
-
-        <GridItem colStart={4} colEnd={6}>
-          <List spacing={4}>
-            <ListItem borderBottom="2px" borderBottomColor={hoverLiColor}>
-              <Heading size="md" marginBottom={1}>
-                <ListIcon as={SettingsIcon} color="yellow.500" />
-                In Progress
-              </Heading>
-            </ListItem>
-            <ListItem>
-              <ListIcon as={SettingsIcon} color="yellow.500" />
-              IPFS File upload
-            </ListItem>
-            <ListItem>
-              <ListIcon as={SettingsIcon} color="yellow.500" />
-              ICO/STO Presale stats
-            </ListItem>
-          </List>
-        </GridItem>
-      </Grid>
+      <Box display={'flex'} justifyContent={'center'}>
+        <Eye />
+      </Box>
     </>
   );
 };

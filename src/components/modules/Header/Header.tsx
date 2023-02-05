@@ -1,5 +1,6 @@
 import { Box, Container, Flex, HStack } from '@chakra-ui/react';
 import { ColorModeButton, BacdLogo, NavBar, SideDrawer } from 'components/elements';
+
 import { ConnectButton } from '../ConnectButton';
 
 const Header = () => {
