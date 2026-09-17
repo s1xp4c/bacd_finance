@@ -37,7 +37,7 @@
     "lint-staged": "^13.0.3",
     "mongoose": "^6.7.3",
     "moralis": "^2.9.0",
-    "next": "16.1.6",
+    "next": "16.3.5",
     "next-auth": "^4.24.13",
     "openai": "^3.1.0",
     "react": "18.2.0",
